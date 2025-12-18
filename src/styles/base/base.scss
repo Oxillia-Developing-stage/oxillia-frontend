@@ -1,0 +1,120 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+
+// ============================================
+// GLOBAL BASE STYLES
+// Applies design system to base HTML elements
+// ============================================
+
+// Root element (where CSS variables are applied by themes)
+:root {
+  font-size: 16px; // Base for rem calculations
+}
+
+// Body defaults
+body {
+  font-family: $font-family-body;
+  font-size: $text-base-size;
+  line-height: $text-base-line-height;
+  font-weight: $font-weight-regular;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+// Headings
+h1 {
+  @include heading-h1(bold);
+  color: var(--color-text-primary);
+}
+
+h2 {
+  @include heading-h2(bold);
+  color: var(--color-text-primary);
+}
+
+h3 {
+  @include heading-h3(bold);
+  color: var(--color-text-primary);
+}
+
+h4 {
+  @include heading-h4(bold);
+  color: var(--color-text-primary);
+}
+
+h5 {
+  @include heading-h5(bold);
+  color: var(--color-text-primary);
+}
+
+h6 {
+  @include heading-h6(bold);
+  color: var(--color-text-primary);
+}
+
+// Paragraphs
+p {
+  @include text-base;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+// Links
+a {
+  color: var(--color-link-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-link-primary-hover);
+  }
+
+  &:active {
+    color: var(--color-link-primary-active);
+  }
+}
+
+// Small text
+small {
+  @include text-sm;
+  color: var(--color-text-secondary);
+}
+
+// Helper/muted text
+.text-helper {
+  color: var(--color-text-helper);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+// Placeholder styling
+::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+// Selection styling
+::selection {
+  background-color: var(--color-button-primary);
+  color: var(--color-text-on-color);
+}
+
+// Focus visible for accessibility
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+// Cards/surfaces base
+.surface {
+  background-color: var(--color-bg-surface);
+}
+
+.card {
+  background-color: var(--color-bg-card);
+}
+
+.elevated {
+  background-color: var(--color-bg-elevated);
+}
