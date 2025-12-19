@@ -22,32 +22,32 @@ body {
 }
 
 // Headings
-h1 {
+h1.heading {
   @include heading-h1(bold);
   color: var(--color-text-primary);
 }
 
-h2 {
+h2.heading {
   @include heading-h2(bold);
   color: var(--color-text-primary);
 }
 
-h3 {
+h3.heading {
   @include heading-h3(bold);
   color: var(--color-text-primary);
 }
 
-h4 {
+h4.heading {
   @include heading-h4(bold);
   color: var(--color-text-primary);
 }
 
-h5 {
+h5.heading {
   @include heading-h5(bold);
   color: var(--color-text-primary);
 }
 
-h6 {
+h6.heading {
   @include heading-h6(bold);
   color: var(--color-text-primary);
 }
@@ -117,4 +117,21 @@ small {
 
 .elevated {
   background-color: var(--color-bg-elevated);
+}
+
+//text base 
+.text-cxl{
+  @include text-xl();
+}
+.text-clg{
+  @include text-lg();
+}
+.text-cbase{
+  @include text-base();
+}
+.text-csm{
+  @include text-sm();
+}
+.text-xs{
+  @include text-xs();
 }
