@@ -132,6 +132,18 @@ small {
 .text-csm{
   @include text-sm();
 }
-.text-xs{
+.text-cxs{
   @include text-xs();
+}
+
+//big container 
+
+.container{
+  width:100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  margin: 0 auto;
+  gap: 15px;
 }
