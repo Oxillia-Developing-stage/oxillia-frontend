@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { url } from 'node:inspector';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
@@ -37,5 +38,58 @@ brands = [
   },
 ];
 
-
+categories =[
+  {
+    name:'Acne',
+    url:'assests/pictures/landing-page/acne.png',
+    router:'#'
+  },
+    {
+    name:'Pigmentation',
+    url:'assests/pictures/landing-page/pigmentation.png',
+    router:'#'
+  },
+  {
+    name:'Sensitive Skin',
+    url:'assests/pictures/landing-page/sensitiveSkin.png',
+    router:'#'
+  },
+  {
+    name:'Drought',
+    url:'assests/pictures/landing-page/drought.png',
+    router:'#'
+  },
+  {
+    name:'wrinkles',
+    url:'assests/pictures/landing-page/wrinkles.png',
+    router:'#'
+  },
+  {
+    name:'Wide Purse',
+    url:'assests/pictures/landing-page/widePurse.png',
+    router:'#'
+  }
+]
+responsiveOptions = [
+  {
+    breakpoint: '1200px',
+    numVisible: 6,
+    numScroll: 1
+  },
+  {
+    breakpoint: '992px',
+    numVisible: 5,
+    numScroll: 1
+  },
+  {
+    breakpoint: '768px',
+    numVisible: 4,
+    numScroll: 1
+  },
+  {
+    breakpoint: '576px',
+    numVisible: 3,
+    numScroll: 1
+  }
+];
 }

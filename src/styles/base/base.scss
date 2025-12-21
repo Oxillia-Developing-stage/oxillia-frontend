@@ -147,3 +147,10 @@ small {
   margin: 0 auto;
   gap: 15px;
 }
+// text colors
+.text-cprimary{
+  color: var(--color-text-primary);
+}
+.text-csecondary{
+  color: var(--color-text-secondary);
+}

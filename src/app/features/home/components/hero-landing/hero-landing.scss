@@ -1,10 +1,16 @@
 img{
     width: 100%;
 }
+.hero{
 
+}
 .hero-bg {
   position: relative;
-  background:var(--color-bg-primary);
+   background: linear-gradient(
+  to bottom,
+  #F2F1FA00 0%,
+  #F5F6FF 100%
+);
   
 //  background: linear-gradient(
 //   to bottom,
