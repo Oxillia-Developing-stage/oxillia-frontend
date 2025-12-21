@@ -1,0 +1,44 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts//typography' as typo;
+.btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 36px 24px 36px;
+    border-radius: 40px;
+    border: none;
+
+    color: var(--color-text-primary);
+    @include typo.text-sm();
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.btn-cta-primary{
+    background-color: var(--color-button-primary);
+    color: var(--color-text-on-color);
+    border-color: var(--color-button-primary);
+    transition: all 0.3s ease-out;
+    &:hover{
+        background-color: var(--color-button-primary-hover);
+        color: var(--color-text-primary);
+        border-color: var(--color-button-primary-hover);
+    }
+    &:active{
+        background-color: var(--color-button-primary-active);
+        color: var(--color-text-primary);
+        border-color: var(--color-button-primary-active);
+    }
+}
+.btn-cta-secondary{
+    background-color: var(--color-bg-primary);
+    color: var(--color-button-primary);
+    border: 1px solid var(--color-button-primary);
+}
+.btn-danger{
+    background-color: var(--color-button-danger);
+    color: var(--color-text-on-color);
+    border-color: var(--color-button-danger);
+
+}

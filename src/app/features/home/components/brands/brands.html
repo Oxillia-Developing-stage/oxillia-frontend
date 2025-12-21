@@ -1,0 +1,23 @@
+<p-carousel class="brands"
+  [value]="brands"
+  [numVisible]="4"
+  [circular]="true"
+  [autoplayInterval]="2500"
+  [showNavigators]="false"
+    [showIndicators]="false"
+    [autoplayInterval]="5000"
+>
+  <ng-template pTemplate="item" let-brand>
+
+    <a [href]="brand.url" target="_blank" rel="noopener" class="flex items-center justify-center">
+      <img
+        [src]="brand.logo"
+        [alt]="brand.name"
+        class="brand-logo"
+      />
+      {{brand.name}}
+    </a>
+
+
+  </ng-template>
+</p-carousel>
