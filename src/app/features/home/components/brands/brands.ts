@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { url } from 'node:inspector';
+
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({

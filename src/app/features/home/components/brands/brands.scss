@@ -30,6 +30,11 @@
         img{
             width: 200px;
         }
+        .p-carousel-prev,
+    .p-carousel-next,
+    .p-carousel-indicators {
+      display: none !important;
+    }
     }
 }
 

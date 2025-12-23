@@ -1,0 +1,40 @@
+<main class="">
+
+<section class="categories-section flex flex-col space-y-2 items-center mt-16">
+  <h4 class="heading">
+   Before & After
+  </h4>
+  
+  <p class="text-cbase text-csecondary mb-10">Follow each skin journey and the result, with the exact products in every case.</p>
+  
+  <div class="w-[100%] mt-10">
+<p-carousel class="beforeandAfter"
+  [value]="people"
+  [numVisible]="1"
+  [responsiveOptions]="responsiveOptions"
+  [circular]="true"
+    
+    (onPageChange)="onSlideChange($event)">
+  <ng-template pTemplate="item" let-person  let-i="index">
+    <div   [ngStyle]="getSlideStyle(i)" class="   card p-3 flex flex-col items-center  rounded-xl justify-center  mr-5 bg-[var(--color-bg-primary)] h-auto">
+
+      <div class="mb-2 w-[50%] p-1 ">
+    <div class=" flex space-x-11   rounded-lg ">
+      <img
+        [src]="person.before_url"
+        class="rounded-lg  object-fill  w-1/2 transform -rotate-6"
+      />
+
+        <img
+            [src]="person.after_url"
+            class="rounded-lg  object-fill  mt-4 w-1/2 rotate-6 "/>
+    </div>
+    <p class="text-csecondry text-cxs w-full text-center">{{person.name}}</p>
+      </div>
+    </div>
+
+  </ng-template>
+</p-carousel>
+  </div>
+</section>
+</main>
