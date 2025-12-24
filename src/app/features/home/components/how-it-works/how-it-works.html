@@ -10,10 +10,10 @@
 
     <div class="col-span-5">
       <div class="card flex justify-content-center">
-        <p-accordion [value]="0" multiple="true" class="w-full">
+        <p-accordion [value]="0" multiple="true" class="w-full panel-container">
             @for (method of methods; let i = $index; track i) {
 
-          <p-accordion-panel [value]="i" >
+          <p-accordion-panel [value]="i" class="panel-section">
             <p-accordion-header>
               <ng-template #toggleicon let-active="active">
                 @if (active) {
