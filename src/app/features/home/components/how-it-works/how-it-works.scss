@@ -1,0 +1,10 @@
+:host{
+    .arrow-up{
+        color: var(--color-icon-on-color);
+        border-radius: 50%;
+        background-color: var(--color-button-secondary);
+    }
+    .arrow-down{
+        color:var(--color-icon-primary);
+    }
+}
