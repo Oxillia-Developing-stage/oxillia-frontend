@@ -3,14 +3,15 @@
 // ============================================
 
 // Font Families - New York optical sizes
-$font-family-heading-xl: 'New York ExtraLarge', Georgia, serif;  // H1, H2 (41px+)
-$font-family-heading-lg: 'New York Large', Georgia, serif;       // H3, H4, H5, H6 (29-40px)
-$font-family-body: 'New York Small', Georgia, serif;             // Body text (16-20px)
-$font-family-body-lg: 'New York Medium', Georgia, serif;         // Large body text (21-28px)
+//for consistency, all use 'New York' as primary, with Georgia as fallback
+$font-family-heading-xl: 'New York', Georgia, serif;  // H1, H2 (41px+)
+$font-family-heading-lg: 'New York', Georgia, serif;  // H3, H4, H5, H6 (29-40px)
+$font-family-body: 'New York', Georgia, serif;        // Body text (16-20px)
+$font-family-body-lg: 'New York', Georgia, serif;     // Large body text (21-28px)
+        // Large body text (21-28px)
 
 // Simplified aliases (if you want one name everywhere)
-$font-family-primary: 'New York Small', Georgia, serif;
-
+$font-family-primary: 'New York', Georgia, serif;
 // Font Weights
 $font-weight-regular: 400;
 $font-weight-medium: 500;
