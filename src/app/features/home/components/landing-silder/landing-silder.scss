@@ -11,9 +11,37 @@
       transition: all 0.5s ease-in-out;
     }
     
-    // Center item styling (if needed)
-    .p-carousel-item-center {
-      z-index: 10; // Bring center item forward
+:host {
+  ::ng-deep .bestceller {
+    .p-carousel-prev,
+    .p-carousel-next,
+    .p-carousel-indicators {
+      display: none !important;
     }
+    
+    // Add perspective to carousel container for 3D effect
+    .p-carousel-items-container {
+      perspective: 1200px;
+      perspective-origin: center center;
+    }
+    
+    // Ensure smooth transitions and preserve 3D space
+    .p-carousel-item {
+      transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    
+    .p-carousel-items-content {
+      display: flex !important;
+      align-items: center;
+      transform-style: preserve-3d;
+    }
+    
+    // Center item styling - bring forward
+    .p-carousel-item-center {
+      z-index: 10;
+    }
+  }
+}
   }
 }

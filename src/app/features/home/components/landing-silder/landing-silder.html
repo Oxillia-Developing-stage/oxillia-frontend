@@ -1,6 +1,6 @@
-<main class=" bg-[var(--color-bg-card)] px-6">
+<main class=" bg-[var(--color-bg-card)] px-6 h-[100vh] ">
 
-<section class="categories-section flex flex-col space-y-2 items-center mt-16">
+<section class="categories-section  h-full flex flex-col space-y-2 items-center justify-center mt-16">
   <h2 class="heading">
     Oxilla best seller
   </h2>
@@ -18,9 +18,11 @@
     
     (onPageChange)="onSlideChange($event)">
   <ng-template pTemplate="item" let-category  let-i="index">
-    <div   [ngStyle]="getSlideStyle(i)" class="   card p-3 flex flex-col items-center  rounded-xl justify-center  mr-5 bg-[var(--color-bg-primary)] h-auto">
-
-      <div class="mb-2 w-full p-1 ">
+    <div   [ngStyle]="getSlideStyle(i)" class="   card p-3 flex flex-col items-center  rounded-xl justify-center  mr-5 bg-[var(--color-bg-primary)] h-auto relative ">
+      <div class="mb-2 w-full p-1 relative ">
+        <div class="overlay w-full h-full absolute z-20 flex items-center justify-center rounded-lg  backdrop-blur-sm">
+          <h4 class="heading">Coming Soon</h4>
+        </div>
     <div class=" relative  w-full h-64 overflow-hidden rounded-lg ">
       <img
         [src]="category.url"

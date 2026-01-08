@@ -8,7 +8,10 @@
 
 // Root element (where CSS variables are applied by themes)
 :root {
-  font-size: 16px; // Base for rem calculations
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  // Optionally transition all custom properties (can be slower):
+  // transition: all 0.3s ease;
 }
 
 // Body defaults

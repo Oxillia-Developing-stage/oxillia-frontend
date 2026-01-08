@@ -132,25 +132,31 @@ responsiveOptions = [
    */
   getSlideStyle(arrayIndex: number) {
     const distance = Math.abs(this.getDistanceFromCenter(arrayIndex));
+
     const maxDistance = Math.floor(this.visibleCount / 2);
     
     // Calculate opacity: 1.0 at center, decreasing to corners
     // Formula: opacity = 1 - (distance / maxDistance) * 0.7
     // This gives: center = 1.0, corners = 0.3
     const opacity = Math.max(0.3, 1 - (distance / maxDistance) * 0.7);
+    // Calculate Y-axis rotation for curved effect
+    // Positive distance (right side) = negative rotation (turn left towards center)
+    // Negative distance (left side) = positive rotation (turn right towards center)
+    const rotateY = distance * -15; // 15 degrees per step from center
+        // Calculate scale: larger at center (1.1), smaller at edges (0.85)
+    const scale = 1.1 - (distance / maxDistance) * 0.25;
     
-    // Calculate translateY: maximum at center, decreasing to corners
-    // Formula: translateY = -20 * (1 - distance / maxDistance)
-    // This gives: center = -20px, corners = 0px
-    const translateY = -20 * (1 - distance / maxDistance);
+    // Calculate translateZ: center item forward, edges backward for depth
     
-    // Calculate scale: larger at center, smaller at corners
-    const scale = 1.05 - (distance / maxDistance) * 0.2;
+    // Calculate translateX: slight offset to enhance curve
+    const translateX = distance * 20; // 20px offset per step
+    
+
     
     return {
       opacity,
-      transform: `translateY(${translateY}px) scale(${scale}) rotate(0deg)`,
-      transition: 'all 0.5s ease-in-out',
+      transform: `scale(${scale}) rotateY(${rotateY}deg) translateX(${translateX}px)`,
+      transition: 'all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)',
     };
   }
 

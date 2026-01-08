@@ -4,7 +4,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { after } from 'node:test';
 @Component({
   selector: 'app-before-and-after',
-  imports: [CarouselModule, CommonModule, CurrencyPipe],
+  imports: [CarouselModule, CommonModule],
   templateUrl: './before-and-after.html',
   styleUrl: './before-and-after.scss',
 })
