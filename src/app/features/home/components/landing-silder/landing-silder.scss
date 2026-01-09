@@ -1,47 +1,27 @@
 :host {
   ::ng-deep .bestceller {
-    .p-carousel-prev,
-    .p-carousel-next,
-    .p-carousel-indicators {
-      display: none !important;
-    }
-    
-    // Ensure smooth transitions
-    .p-carousel-item {
-      transition: all 0.5s ease-in-out;
-    }
-    
-:host {
-  ::ng-deep .bestceller {
-    .p-carousel-prev,
-    .p-carousel-next,
-    .p-carousel-indicators {
-      display: none !important;
-    }
-    
-    // Add perspective to carousel container for 3D effect
-    .p-carousel-items-container {
-      perspective: 1200px;
-      perspective-origin: center center;
-    }
-    
-    // Ensure smooth transitions and preserve 3D space
-    .p-carousel-item {
-      transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-      transform-style: preserve-3d;
-    }
-    
-    .p-carousel-items-content {
-      display: flex !important;
+    width: 100%;
+    height: auto;
+    padding: 40px 0;
+
+    swiper-slide {
+      width: 300px;
+      height: auto;
+      display: flex;
+      justify-content: center;
       align-items: center;
-      transform-style: preserve-3d;
     }
-    
-    // Center item styling - bring forward
-    .p-carousel-item-center {
-      z-index: 10;
+
+    .card {
+      width: 100%;
+      margin: 0;
     }
+
+    .swiper-wrapper {
+      align-items: center;
+      width: 100%;
+    }
+
   }
 }
-  }
-}
+
