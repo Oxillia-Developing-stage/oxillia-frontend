@@ -6,17 +6,25 @@
     
     <p class="text-cbase text-csecondary mb-10">Our most-loved products, trusted by thousands</p>
     
-    <div class="w-full mt-10">
+    <div class="w-full mt-12">
       <swiper-container 
+      #bestSellerSwiper
         class="bestceller"
-        css-mode="true"
-        slides-per-view="5"
-        centered-slides="true"
-        space-between="30"
-        loop="true"
-        loop-additional-slides="2"
-        grab-cursor="true"
-        scrollbar="{ draggable: true }"
+        pagination="true" 
+        pagination-clickable="true"
+        slides-per-view="3"
+          space-between="20"
+          centered-slides="true"
+          initial-slide="2"
+          watch-slides-progress="true"
+
+          grab-cursor="true"
+          breakpoints='{
+            "768": {
+              "slidesPerView": 5,
+              "spaceBetween": 40
+            }
+          }'
       >
         <swiper-slide *ngFor="let category of categories">
           <div class="card p-3 flex flex-col items-center rounded-xl justify-center bg-[var(--color-bg-primary)] h-auto relative">
@@ -53,5 +61,6 @@
         </swiper-slide>
       </swiper-container>
     </div>
+    <button class="btn btn-cta-primary">View All Products</button>
   </section>
 </main>

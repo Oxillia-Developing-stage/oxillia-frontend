@@ -1,0 +1,272 @@
+# Oxillia Frontend - System & Project Requirements
+# This file documents all system requirements, dependencies, and configurations needed to run the project.
+
+# ============================================================================
+# SYSTEM REQUIREMENTS
+# ============================================================================
+
+# Operating System
+# - Windows 10+, macOS 10.15+, or Linux (Ubuntu 20.04+)
+
+# Runtime Environment
+# - Node.js: 18.x.x or higher (LTS recommended)
+# - npm: 9.x.x or higher
+# - Git: 2.30+
+
+# Command to verify installations:
+# - node --version    (should show v18.x.x or higher)
+# - npm --version     (should show 9.x.x or higher)
+# - git --version     (should show 2.30+)
+
+# ============================================================================
+# DEVELOPMENT ENVIRONMENT SETUP
+# ============================================================================
+
+# 1. Install Node.js with npm
+#    Download from: https://nodejs.org/
+#    Recommended: LTS version (18.x.x or 20.x.x)
+
+# 2. Install Angular CLI globally (optional but recommended)
+npm install -g @angular/cli@20.3.13
+
+# 3. Clone the repository
+git clone <repository-url>
+cd Oxillia-frontend
+
+# 4. Install project dependencies
+npm install
+
+# ============================================================================
+# PROJECT DEPENDENCIES (see package.json for version details)
+# ============================================================================
+
+# CORE ANGULAR FRAMEWORK
+@angular/common@^20.3.0                    # Common Angular utilities
+@angular/compiler@^20.3.0                  # Angular compiler
+@angular/core@^20.3.0                      # Core Angular framework
+@angular/forms@^20.3.0                     # Form handling (Reactive & Template-driven)
+@angular/platform-browser@^20.3.0          # Browser platform
+@angular/platform-server@^20.3.0           # Server-side rendering support
+@angular/router@^20.3.0                    # Routing module
+@angular/ssr@^20.3.13                      # Server-side rendering bundle
+
+# STATE MANAGEMENT
+@ngrx/effects@^20.1.0                      # NgRx Effects for side effects
+@ngrx/store@^20.1.0                        # NgRx Store for state management
+rxjs@^7.8.0                                # Reactive programming library
+
+# UI & STYLING COMPONENTS
+primeng@^20.4.0                            # Enterprise UI components
+@primeuix/themes@^2.0.2                    # PrimeNG theme system
+tailwindcss@^3.4.18                        # Utility-first CSS framework
+
+# SERVER-SIDE RENDERING
+express@^5.1.0                             # Express.js server
+
+# UTILITIES
+tslib@^2.3.0                               # TypeScript runtime library
+
+# ============================================================================
+# DEVELOPMENT DEPENDENCIES (see package.json)
+# ============================================================================
+
+# BUILD TOOLS
+@angular/build@^20.3.13                    # Angular build tools
+@angular/cli@^20.3.13                      # Angular CLI for scaffolding
+@angular/compiler-cli@^20.3.0               # CLI compiler
+
+# LANGUAGE & TYPING
+typescript@^5.9.2                          # TypeScript language
+
+# TESTING FRAMEWORK
+jasmine-core@^5.9.0                        # Jasmine testing framework
+karma@^6.4.0                               # Karma test runner
+karma-chrome-launcher@^3.2.0                # Chrome browser launcher for Karma
+karma-coverage@^2.2.0                      # Code coverage reporter
+karma-jasmine@^5.1.0                       # Jasmine adapter for Karma
+karma-jasmine-html-reporter@^2.1.0         # HTML reporter for Karma
+
+# CSS PROCESSING
+autoprefixer@^10.4.22                      # Add vendor prefixes to CSS
+postcss@^8.5.6                             # CSS post-processing
+sass@latest                                # SCSS/SASS compiler (installed via Node modules)
+
+# TYPE DEFINITIONS
+@types/express@^5.0.1                      # Express type definitions
+@types/jasmine@^5.1.0                      # Jasmine type definitions
+@types/node@^20.17.19                      # Node.js type definitions
+
+# ============================================================================
+# OPTIONAL DEPENDENCIES (for enhanced development)
+# ============================================================================
+
+# Code Formatting
+prettier@latest                            # Code formatter (defined in package.json config)
+
+# State Management Debugging (Development only)
+@ngrx/store-devtools@^20.1.0                # NgRx DevTools for debugging
+
+# Performance Monitoring
+@angular/common/http                       # Built-in HTTP profiling
+
+# ============================================================================
+# ENVIRONMENT SETUP
+# ============================================================================
+
+# .env / Environment Variables (create if needed):
+# - API_BASE_URL=http://localhost:3000
+# - ENVIRONMENT=development
+# - LOG_LEVEL=debug
+
+# ============================================================================
+# NPM SCRIPTS AVAILABLE
+# ============================================================================
+
+# Development
+npm start                                  # Start dev server (ng serve)
+npm run build                              # Build for production
+npm run watch                              # Build in watch mode
+npm test                                   # Run unit tests
+npm run serve:ssr:Oxillia-frontend         # Run SSR server
+
+# ============================================================================
+# FOLDER STRUCTURE REQUIREMENTS
+# ============================================================================
+
+# Core folders that must exist:
+src/
+├── app/                                   # Main application code
+├── styles/                                # Global styles
+├── index.html                             # Entry HTML file
+├── main.ts                                # Application entry point
+└── main.server.ts                         # SSR entry point
+
+public/
+└── assets/                                # Static assets (images, fonts)
+
+# ============================================================================
+# CONFIGURATION FILES REQUIRED
+# ============================================================================
+
+angular.json                               # Angular CLI configuration
+tsconfig.json                              # TypeScript configuration
+tsconfig.app.json                          # App-specific TS config
+tsconfig.spec.json                         # Testing TS config
+package.json                               # Project metadata & dependencies
+package-lock.json                          # Locked dependency versions (generated)
+tailwind.config.cjs                        # Tailwind CSS configuration
+prettier.config.js (optional)              # Prettier formatting config
+
+# ============================================================================
+# BROWSER SUPPORT
+# ============================================================================
+
+# The project supports:
+# - Chrome (latest 2 versions)
+# - Firefox (latest 2 versions)
+# - Safari (latest 2 versions)
+# - Edge (latest 2 versions)
+
+# ============================================================================
+# BUILD CONFIGURATION
+# ============================================================================
+
+# Production Build Optimization:
+# - Minification enabled
+# - Tree-shaking enabled
+# - Lazy-loading configured
+# - Code splitting enabled
+# - Source maps generation (optional)
+
+# Development Build:
+# - Fast compilation
+# - Source maps enabled
+# - No minification
+
+# ============================================================================
+# PERFORMANCE RECOMMENDATIONS
+# ============================================================================
+
+# Minimum specs for development:
+# - CPU: Dual-core processor
+# - RAM: 8GB (16GB+ recommended)
+# - Disk: 5GB free space (includes node_modules)
+# - Network: 50 Mbps for npm install
+
+# Build time expectations:
+# - Initial install: 2-5 minutes (depends on internet speed)
+# - Development build: 5-15 seconds
+# - Production build: 30-60 seconds
+# - Tests: 10-30 seconds
+
+# ============================================================================
+# TROUBLESHOOTING
+# ============================================================================
+
+# Issue: Port 4200 already in use
+# Solution: ng serve --port 4201
+
+# Issue: npm ERR! code ERESOLVE
+# Solution: npm install --legacy-peer-deps
+
+# Issue: Out of memory during build
+# Solution: node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build
+
+# Issue: Module not found errors
+# Solution: 
+#   rm -rf node_modules
+#   rm package-lock.json
+#   npm install
+
+# ============================================================================
+# IDE/EDITOR RECOMMENDATIONS
+# ============================================================================
+
+# Visual Studio Code (Recommended)
+# - Angular Language Service extension
+# - Prettier code formatter extension
+# - ESLint extension
+# - Tailwind CSS IntelliSense extension
+# - Thunder Client / REST Client extensions
+
+# ============================================================================
+# GIT CONFIGURATION
+# ============================================================================
+
+# .gitignore should include:
+node_modules/
+dist/
+.angular/
+.DS_Store
+*.log
+.env.local
+coverage/
+
+# ============================================================================
+# DEPLOYMENT REQUIREMENTS
+# ============================================================================
+
+# Server Requirements:
+# - Node.js 18+ runtime
+# - at least 512MB RAM
+# - at least 1GB disk space for application files
+# - SSL/TLS certificate for HTTPS
+
+# Environment Variables for Production:
+# ENVIRONMENT=production
+# API_BASE_URL=https://api.oxillia.com
+# LOG_LEVEL=error
+
+# ============================================================================
+# VERSION COMPATIBILITY
+# ============================================================================
+
+# This project requires:
+# Angular: 20.3.x
+# TypeScript: 5.9.x
+# Node.js: 18.x or 20.x
+# npm: 9.x or higher
+
+# Check compatibility:
+ng version
+npm outdated    # Show packages that need updates
