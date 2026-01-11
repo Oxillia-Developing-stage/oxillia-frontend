@@ -1,4 +1,4 @@
-<main class="bg-[var(--color-bg-card)] px-6 h-[100vh]">
+<main class="bg-[var(--color-bg-card)] px-6 h-min-[100vh] py-10">
   <section class="categories-section h-full flex flex-col space-y-2 items-center justify-center mt-16">
     <h2 class="heading">
       Oxilla best seller
@@ -13,14 +13,14 @@
         pagination="true" 
         pagination-clickable="true"
         slides-per-view="3"
-          space-between="20"
+          space-between="25"
           centered-slides="true"
           initial-slide="2"
           watch-slides-progress="true"
 
           grab-cursor="true"
           breakpoints='{
-            "768": {
+            "1024": {
               "slidesPerView": 5,
               "spaceBetween": 40
             }
@@ -29,10 +29,10 @@
         <swiper-slide *ngFor="let category of categories">
           <div class="card p-3 flex flex-col items-center rounded-xl justify-center bg-[var(--color-bg-primary)] h-auto relative">
             <div class="mb-2 w-full p-1 relative">
-              <div class="overlay w-full h-full absolute z-20 flex items-center justify-center rounded-lg backdrop-blur-sm">
+              <!-- <div class="overlay w-full h-full absolute z-20 flex items-center justify-center rounded-lg backdrop-blur-sm">
                 <h4 class="heading">Coming Soon</h4>
-              </div>
-              <div class="relative w-full h-64 overflow-hidden rounded-lg">
+              </div> -->
+              <div class="relative w-full h-64 overflow-hidden rounded-lg mb-2">
                 <img [src]="category.url" class="rounded-lg object-fill w-full h-full" />
                 <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute top-1 left-2 p-1 z-5">Best Seller</div>
                 <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute bottom-1 left-2 p-1 z-5">
