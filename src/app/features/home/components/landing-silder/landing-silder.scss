@@ -63,4 +63,13 @@
 
 
   }
+  
+}
+
+@media (max-width: 768px) {
+  :host {
+    ::ng-deep .bestceller {
+      padding: 20px 0;
+    }
+  }
 }
