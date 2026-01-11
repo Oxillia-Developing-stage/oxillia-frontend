@@ -1,5 +1,5 @@
 <nav class="w-full flex justify-between items-center bg-[var(--color-bg-primary)] px-[40px] py-[20px]">
-    <ul class="flex space-x-7 p-4 text-[var(--color-text-secondary)] justify-end flex-1">
+    <ul class="hidden  md:flex space-x-7 p-4 text-[var(--color-text-secondary)] justify-end flex-1">
         <li><a routerLink="main/home" routerLinkActive="active" class="nav-link" [routerLinkActiveOptions]="{exact:true}" >Home</a></li>
         <li><a routerLink="main/shop" routerLinkActive="active" class="nav-link" >shop</a></li>
         <li><a href="#" class="nav-link">Categories</a></li>
@@ -30,7 +30,7 @@
 </div>
 </nav>
 
-<nav class="w-full flex justify-between items-center bg-[var(--color-bg-primary)] px-[40px] py-[20px] space-x-14">
+<nav class="w-full flex flex-col md:flex-row justify-between items-center bg-[var(--color-bg-primary)] px-[40px] py-[20px] space-x-14">
     <div class="flex-1 flex space-x-4 justify-center items-center">
         <span class=" text-[var(--color-icon-secondary)]">
             <svg  class="text-[var(--color-icon-secondary)] "  width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
