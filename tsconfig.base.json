@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@oxillia/core": ["libs/core/src/index.ts"],
+      "@oxillia/shared": ["libs/shared/src/index.ts"],
+      "@oxillia/features/auth": ["libs/features/auth/src/index.ts"],
+      "@oxillia/features/home": ["libs/features/home/src/index.ts"],
+      "@oxillia/features/products": ["libs/features/products/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
+
+
