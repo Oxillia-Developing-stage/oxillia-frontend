@@ -1,0 +1,92 @@
+{
+  "name": "ecommerce",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/ecommerce/src",
+  "tags": ["type:app", "scope:ecommerce"],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/ecommerce",
+        "index": "apps/ecommerce/src/index.html",
+        "browser": "apps/ecommerce/src/main.ts",
+        "polyfills": [],
+        "tsConfig": "apps/ecommerce/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "public"
+          },
+          "apps/ecommerce/src/favicon.ico"
+        ],
+        "styles": [
+          "apps/ecommerce/src/styles.scss"
+        ],
+        "server": "apps/ecommerce/src/main.server.ts",
+        "outputMode": "server",
+        "ssr": {
+          "entry": "apps/ecommerce/src/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kB",
+              "maximumError": "1MB"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "ecommerce:build:production"
+        },
+        "development": {
+          "buildTarget": "ecommerce:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n"
+    },
+    "test": {
+      "executor": "@angular/build:karma",
+      "options": {
+        "tsConfig": "apps/ecommerce/tsconfig.spec.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "public"
+          }
+        ],
+        "styles": [
+          "apps/ecommerce/src/styles.scss"
+        ]
+      }
+    }
+  }
+}
+
