@@ -3,11 +3,20 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:Oxillia-frontend": "node dist/Oxillia-frontend/server/server.mjs"
+    "start": "nx serve ecommerce",
+    "start:ecommerce": "nx serve ecommerce",
+    "start:dashboard": "nx serve dashboard",
+    "build": "nx build ecommerce",
+    "build:ecommerce": "nx build ecommerce",
+    "build:dashboard": "nx build dashboard",
+    "build:all": "nx run-many -t build --all",
+    "watch": "nx build ecommerce --watch",
+    "test": "nx test",
+    "test:ecommerce": "nx test ecommerce",
+    "test:dashboard": "nx test dashboard",
+    "lint": "nx lint",
+    "serve:ssr:ecommerce": "node dist/apps/ecommerce/server/server.mjs",
+    "serve:ssr:dashboard": "node dist/apps/dashboard/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,
@@ -41,9 +50,14 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-devkit/core": "^20.3.13",
+    "@angular-devkit/schematics": "^20.3.13",
     "@angular/build": "^20.3.13",
     "@angular/cli": "^20.3.13",
     "@angular/compiler-cli": "^20.3.0",
+    "@nx/angular": "^21.6.1",
+    "@nx/workspace": "^21.6.1",
+    "@schematics/angular": "^20.3.13",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
@@ -54,6 +68,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nx": "^21.6.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18",
     "typescript": "~5.9.2"

@@ -14,13 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@oxillia/core": ["libs/core/src/index.ts"],
-      "@oxillia/shared": ["libs/shared/src/index.ts"],
-      "@oxillia/features/auth": ["libs/features/auth/src/index.ts"],
-      "@oxillia/features/home": ["libs/features/home/src/index.ts"],
-      "@oxillia/features/products": ["libs/features/products/src/index.ts"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
