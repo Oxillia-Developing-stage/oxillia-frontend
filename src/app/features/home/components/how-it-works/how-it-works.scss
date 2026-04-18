@@ -1,0 +1,46 @@
+:host {
+    .arrow-up {
+        color: var(--color-icon-on-color);
+        border-radius: 50%;
+        background-color: var(--color-button-secondary);
+    }
+    
+    .arrow-down {
+        color: var(--color-icon-primary);
+    }
+}
+
+::ng-deep {
+    .panel-container{
+        background-color: var(--color-bg-primary) !important;
+             p-accordion-panel.panel-section {
+         border-width: 0px !important;
+        border-radius: 20px !important;
+        margin-bottom: 10px !important;
+        background-color: var(--color-bg-primary) !important;;
+        overflow: hidden !important; /* So content respects border-radius */
+        p-accordion-header {
+
+            background-color: var(--color-bg-primary) !important;
+            border-radius: 20px 20px 0px 0px !important;
+            border-width:0px !important;
+            
+            &[aria-expanded="true"] {
+                background-color: var(--color-bg-surface) !important;
+            }
+            &[aria-expanded="false"] {
+        border: 1px solid var(--color-border-default) !important;
+    }
+        }
+        .p-accordioncontent-content{
+            background-color: var(--color-bg-surface) !important;
+        }
+        
+        .p-accordion-content {
+            background-color: var(--color-bg-surface) !important;
+            color: var(--color-text-secondary) !important;
+        }
+    }
+    }
+
+}

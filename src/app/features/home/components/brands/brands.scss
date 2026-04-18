@@ -1,0 +1,40 @@
+:host{
+    ::ng-deep .brands{
+        color: var(--color-text-placeholder);
+        
+        .p-carousel-item-list{
+            
+        }
+        .p-carousel-items-content {
+      transition-duration: 1.2s !important;
+      transition-timing-function: linear !important;
+        }
+            .p-carousel-prev,
+    .p-carousel-next,
+    .p-carousel-indicators {
+      display: none !important;
+    }
+        img{
+            filter: grayscale(100%);
+            opacity: 0.6;
+            width: 40px;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+            &:hover{
+                filter: none;
+                opacity: 1;
+            }
+
+        }
+    }
+    ::ng-deep .categories{
+        img{
+            width: 200px;
+        }
+        .p-carousel-prev,
+    .p-carousel-next,
+    .p-carousel-indicators {
+      display: none !important;
+    }
+    }
+}
+

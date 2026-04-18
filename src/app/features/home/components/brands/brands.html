@@ -1,0 +1,92 @@
+<main class="bg-[var(--color-bg-primary)] h-[70vh] ">
+
+<p-carousel class="brands"
+  [value]="brands"
+  [numVisible]="4"
+  [circular]="true"
+  [autoplayInterval]="2500"
+  [showNavigators]="false"
+    [showIndicators]="false"
+    [autoplayInterval]="5000"
+>
+  <ng-template pTemplate="item" let-brand>
+
+    <a [href]="brand.url" target="_blank" rel="noopener" class="flex items-center justify-center">
+      <img
+        [src]="brand.logo"
+        [alt]="brand.name"
+        class="brand-logo"
+      />
+      {{brand.name}}
+    </a>
+
+
+  </ng-template>
+</p-carousel>
+
+
+<section class="categories-section flex flex-col space-y-2 items-center mt-16">
+  <h4 class="heading">
+    Shop by skin concern
+  </h4>
+  
+  <p class="text-cbase text-csecondary mb-10">Find clinically-proven solutions tailored to your skin</p>
+  
+  <div class="w-[100%] mt-10">
+<p-carousel class="categories"
+  [value]="categories"
+  [numVisible]="6"
+  [responsiveOptions]="responsiveOptions"
+  [circular]="true"
+  [autoplayInterval]="2500"
+  [showNavigators]="false"
+    [showIndicators]="false"
+    [autoplayInterval]="3000"
+>
+  <ng-template pTemplate="item" let-category>
+    <div class="card p-2 flex flex-col items-center  rounded-xl justify-center  mr-2">
+
+      <div class="mb-2 px-1 flex w-[200px] justify-between items-center">
+      <p class="text-clg text-cprimary">
+        {{category.name}}
+      </p>
+          <div class="bg-[var(--color-button-primary)] w-8 h-8  flex justify-center items-center  rounded-full ">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke=""
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22.6667 9.3335L8 24.0002"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M14.6667 8.17535C14.6667 8.17535 22.1781 7.54216 23.318 8.68204C24.4579 9.82193 23.8246 17.3333 23.8246 17.3333"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+      </div>
+
+    <a [href]="category.router" target="_self" rel="noopener" class="flex items-center justify-center">
+      <img
+        [src]="category.url"
+        [alt]="category.name"
+        class="rounded-lg"
+      />
+    </a>
+    </div>
+
+  </ng-template>
+</p-carousel>
+  </div>
+</section>
+</main>

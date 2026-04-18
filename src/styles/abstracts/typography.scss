@@ -2,13 +2,22 @@
 // TYPOGRAPHY SYSTEM
 // ============================================
 
-// Font Families
-$font-family-primary: 'Poppins', sans-serif;
-$font-family-body: 'Poppins', sans-serif;
+// Font Families - New York optical sizes
+//for consistency, all use 'New York' as primary, with Georgia as fallback
+$font-family-heading-xl: 'New York', Georgia, serif;  // H1, H2 (41px+)
+$font-family-heading-lg: 'New York', Georgia, serif;  // H3, H4, H5, H6 (29-40px)
+$font-family-body: 'New York', Georgia, serif;        // Body text (16-20px)
+$font-family-body-lg: 'New York', Georgia, serif;     // Large body text (21-28px)
+        // Large body text (21-28px)
 
+// Simplified aliases (if you want one name everywhere)
+$font-family-primary: 'New York', Georgia, serif;
 // Font Weights
 $font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
 $font-weight-bold: 700;
+$font-weight-heavy: 800;
 
 // Letter Spacing
 $letter-spacing-none: 0;
@@ -106,7 +115,7 @@ $text-xs-letter-spacing: $letter-spacing-none;
 
 // Heading Mixins
 @mixin heading-h1($weight: regular) {
-  font-family: $font-family-primary;
+  font-family: $font-family-heading-xl;
   font-size: $heading-h1-size;
   line-height: $heading-h1-line-height;
   letter-spacing: $heading-h1-letter-spacing;
@@ -114,15 +123,16 @@ $text-xs-letter-spacing: $letter-spacing-none;
 }
 
 @mixin heading-h2($weight: regular) {
-  font-family: $font-family-primary;
+  font-family: $font-family-heading-xl;
   font-size: $heading-h2-size;
   line-height: $heading-h2-line-height;
   letter-spacing: $heading-h2-letter-spacing;
   font-weight: if($weight == bold, $heading-h2-weight-bold, $heading-h2-weight-regular);
 }
 
+// Heading Mixins (H3-H6 use Large)
 @mixin heading-h3($weight: regular) {
-  font-family: $font-family-primary;
+  font-family: $font-family-heading-lg;
   font-size: $heading-h3-size;
   line-height: $heading-h3-line-height;
   letter-spacing: $heading-h3-letter-spacing;
@@ -130,7 +140,7 @@ $text-xs-letter-spacing: $letter-spacing-none;
 }
 
 @mixin heading-h4($weight: regular) {
-  font-family: $font-family-primary;
+  font-family: $font-family-heading-lg;
   font-size: $heading-h4-size;
   line-height: $heading-h4-line-height;
   letter-spacing: $heading-h4-letter-spacing;
@@ -138,7 +148,7 @@ $text-xs-letter-spacing: $letter-spacing-none;
 }
 
 @mixin heading-h5($weight: regular) {
-  font-family: $font-family-primary;
+  font-family: $font-family-heading-lg;
   font-size: $heading-h5-size;
   line-height: $heading-h5-line-height;
   letter-spacing: $heading-h5-letter-spacing;
@@ -146,16 +156,16 @@ $text-xs-letter-spacing: $letter-spacing-none;
 }
 
 @mixin heading-h6($weight: regular) {
-  font-family: $font-family-primary;
+  font-family: $font-family-heading-lg;
   font-size: $heading-h6-size;
   line-height: $heading-h6-line-height;
   letter-spacing: $heading-h6-letter-spacing;
   font-weight: if($weight == bold, $heading-h6-weight-bold, $heading-h6-weight-regular);
 }
 
-// Body Text Mixins
+// Body Text Mixins (XL, LG use Medium; Base, SM, XS use Small)
 @mixin text-xl($weight: regular) {
-  font-family: $font-family-body;
+  font-family: $font-family-body-lg;
   font-size: $text-xl-size;
   line-height: $text-xl-line-height;
   letter-spacing: $text-xl-letter-spacing;
@@ -163,7 +173,7 @@ $text-xs-letter-spacing: $letter-spacing-none;
 }
 
 @mixin text-lg($weight: regular) {
-  font-family: $font-family-body;
+  font-family: $font-family-body-lg;
   font-size: $text-lg-size;
   line-height: $text-lg-line-height;
   letter-spacing: $text-lg-letter-spacing;

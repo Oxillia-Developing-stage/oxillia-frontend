@@ -1,6 +1,24 @@
+// ============================================
+// MAIN STYLESHEET
+// Import order matters!
+// ============================================
+@use 'base/fonts';
+
+// 1. Abstracts (variables, functions, mixins - no CSS output)
 @use 'abstracts/variables';
+@use 'abstracts/typography';
+
+// 2. Themes (CSS custom properties)
 @use 'themes/light';
 @use 'themes/dark';
-@use 'abstracts/typography';
+@use './themes/_force_dark';
+// 3. Base styles (reset, global defaults)
 @use 'base/reset';
 @use 'base/base';
+
+// 4. Components
+@use 'components/_buttons';
+@use 'components/_forms';
+
+// 5. Vendors
+@use 'vendors/vendor';
