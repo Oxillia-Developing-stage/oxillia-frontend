@@ -1,0 +1,166 @@
+img{
+    width: 100%;
+}
+
+.hero-bg {
+  position: relative;
+   background: linear-gradient(
+  to bottom,
+  #F2F1FA00 0%,
+  #F5F6FF 100%
+);
+  
+//  background: linear-gradient(
+//   to bottom,
+//   #F2F1FA00 0%,
+//   #F5F6FF 100%
+// );
+border-radius: 5%;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.hero__left-img {
+    border-radius: 0% 10% 0% 5%;
+    background-color: white;
+    position: relative;
+    z-index: 5;
+  box-shadow: 1rem 0.4rem 0px 7px white;
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: flex-end;
+  & img{
+    position: absolute;
+    top: 7px;;
+    left: 10;
+    height: 100%;
+transform: scaleX(-1);
+width: 100%;
+object-fit: cover;
+clip-path: url(#complexScoop);
+aspect-ratio: 1/1;
+
+}
+& .scoop-icon-container{
+     position: absolute;
+    z-index: 30;
+    width: 20%;  /* Matches the 0.25 in SVG */
+    height: 20%; /* Matches the 0.25 in SVG */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    bottom: -4px; /* Aligns with the top of the image */
+    left: 10px; /* Aligns with the left edge of the image */
+}
+}
+.hero__left-img::after {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: -2px;
+    width:25px;
+    height:25px;
+    border-radius: 0px 0px 0px 100%;
+    background-color: transparent;
+    z-index: 10;
+    box-shadow: -0.3rem 0.4rem 0px #fff;
+}
+.hero__left-img::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: -43px;
+    width:20px;
+    height:20px;
+    border-radius: 0px 0px 0px 100%;
+    background-color: transparent;
+    z-index: 10;
+    box-shadow: -0.3rem 0.19rem 0px 3px white;
+}
+
+.hero__right-img {
+      width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: flex-end;
+    border-radius: 10% 0% 5% 0%;
+    background-color: white;
+    position: relative;
+    z-index: 5;
+    box-shadow: -1rem 0.4rem 0px 7px white;
+      & img{
+            position: absolute;
+    top: 7px;
+    right: 10px;
+    height: 100%;
+transform: scaleX(-1);
+width: 100%;
+object-fit: cover;
+clip-path: url(#topRightSmoothScoop);
+aspect-ratio: 1/1;
+
+}
+& .scoop-icon-container{
+     position: absolute;
+    z-index: 30;
+    width: 20%;  /* Matches the 0.25 in SVG */
+    height: 20%; /* Matches the 0.25 in SVG */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    top: 13px; /* Aligns with the top of the image */
+    right: 7px; /* Aligns with the right edge of the image */
+}
+}
+.hero__right-img::after {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: -2px;
+    width:20px;
+    height:20px;
+    border-radius: 0px 0px 100% 0%;
+    background-color: transparent;
+    z-index: 10;
+    box-shadow: 0.3rem 0.4rem 0px #fff;
+}
+.hero__right-img::before {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: -40px;
+    width:20px;
+    height:20px;
+    border-radius: 0px 0px 100% 0%;
+    background-color: transparent;
+    z-index: 10;
+    box-shadow: 0.3rem 0.19rem 0px 3px white;
+}
+
+
+
+
+
+// .hero__visual{
+//     display: flex;
+//     gap: 1rem;
+// }
+// .hero__main-img{
+//     flex-grow: 10;
+// }
+// .hero__right-img{
+//     flex-grow: 1;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: end;
+// }
+// .hero__left-img{
+//     flex-grow: 1;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: end;
+// }

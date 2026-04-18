@@ -1,0 +1,55 @@
+.beforeandAfter {
+  /* 1. Make the main container relative so we can position the dots */
+  ::ng-deep .p-carousel-content-container {
+    position: relative;
+    padding-bottom: 60px; /* Space for the buttons and dots */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 2. Style the dots (UL) - Shrink it so it doesn't take 100% width */
+  ::ng-deep .p-carousel-indicators {
+    position: absolute;
+    bottom: 15px;      /* Move it into the footer area */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto !important; 
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    z-index: 10;
+  }
+
+  /* 3. Style the Dots and Ovals */
+  ::ng-deep .p-carousel-indicator button {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    background-color: var(--color-button-secondary) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+  }
+
+  ::ng-deep .p-carousel-indicator.p-highlight button {
+    width: 30px !important;
+    border-radius: 6px !important;
+    background-color: var(--color-button-primary) !important;
+  }
+
+  /* 4. Position your Custom Buttons around the absolute dots */
+  .custom-controls-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px; /* This gap creates the space where the absolute UL sits */
+    height: 40px;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-primary);
+  }
+}

@@ -1,0 +1,74 @@
+<main class="px-16">
+  <section class="grid grid-rows-2  lg:grid-rows-1 lg:grid-cols-12 w-full space-x-4 mb-40">
+    <div class="      row-span-1  lg:col-span-7 h-[400px]">
+      <img
+        src="assests/pictures/landing-page/hows.jpg"
+        alt="how it works"
+        class="w-full object-cover h-full rounded-lg"
+      />
+    </div>
+
+    <div class=" row-span-1  lg:col-span-5">
+      <div class="card flex justify-content-center">
+        <p-accordion [value]="0" multiple="true" class="w-full panel-container">
+            @for (method of methods; let i = $index; track i) {
+
+          <p-accordion-panel [value]="i" class="panel-section">
+            <p-accordion-header>
+              <ng-template #toggleicon let-active="active">
+                @if (active) {
+                <div class="arrow-up">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M29.9998 24.9999C29.9998 24.9999 22.6349 15 19.9997 15C17.3645 15 9.99976 25 9.99976 25"
+                      stroke="var(--color-icon-primary)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                } @else {
+                <div class="arrow-down">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M30 15.0001C30 15.0001 22.6351 25 19.9999 25C17.3647 25 10 15 10 15"
+                      stroke="var(--color-icon-primary)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                }
+              </ng-template>
+            <span class="flex items-center gap-2 w-full">
+                <h6 class="font-bold  heading line-clamp-2">{{method.header}}</h6>
+                
+              </span>
+            </p-accordion-header>
+            <p-accordion-content>
+              <p class="m-0   ">
+                {{method.content}}
+              </p>
+            </p-accordion-content>
+          </p-accordion-panel>
+            }
+
+        </p-accordion>
+      </div>
+    </div>
+  </section>
+</main>

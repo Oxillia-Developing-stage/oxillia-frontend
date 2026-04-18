@@ -1,0 +1,76 @@
+// ============================================
+// RESPONSIVE BREAKPOINTS
+// ============================================
+
+// Breakpoint values
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1025px;
+
+// Breakpoint map for easier iteration
+$breakpoints: (
+  'mobile': $breakpoint-mobile,
+  'tablet': $breakpoint-tablet,
+  'desktop': $breakpoint-desktop,
+);
+
+// ============================================
+// MEDIA QUERY MIXINS
+// ============================================
+
+// Mobile-first approach (min-width)
+@mixin mobile-up {
+  @media (min-width: #{$breakpoint-mobile + 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$breakpoint-tablet + 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+// Max-width approach (mobile-first)
+@mixin mobile-only {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: #{$breakpoint-mobile + 1px}) and (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+// Combined responsive mixin
+@mixin responsive($breakpoint) {
+  @if $breakpoint == mobile {
+    @include mobile-only {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @include tablet-only {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @include desktop-only {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}. Use 'mobile', 'tablet', or 'desktop'.";
+  }
+}
