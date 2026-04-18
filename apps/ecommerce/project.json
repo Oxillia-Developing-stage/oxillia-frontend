@@ -26,6 +26,11 @@
         "styles": [
           "apps/ecommerce/src/styles.scss"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared-styles/src"
+          ]
+        },
         "server": "apps/ecommerce/src/main.server.ts",
         "outputMode": "server",
         "ssr": {
@@ -84,7 +89,12 @@
         ],
         "styles": [
           "apps/ecommerce/src/styles.scss"
-        ]
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared-styles/src"
+          ]
+        }
       }
     }
   }

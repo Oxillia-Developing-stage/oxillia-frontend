@@ -1,0 +1,46 @@
+
+/* --- Generic Reset (Applies to all swipers to prevent clipping) --- */
+swiper-container {
+	display: block;
+}
+.swiper-wrapper {
+	overflow: visible !important;
+}
+
+/* --- Scoped Styles for Best Seller Slider Only --- */
+
+// 1. Move the floor down only for this slider
+.bestceller::part(container) {
+	overflow: visible !important;
+	clip-path: none !important;
+	padding-bottom: 70px !important; // Adjusted for better spacing
+}
+
+// 2. Position pagination for this slider
+.bestceller::part(pagination) {
+	bottom: 0px !important;
+	overflow: visible;
+}
+
+// 3. Circle dots for this slider
+.bestceller::part(bullet) {
+	width: 10px;
+	height: 10px;
+	background-color: var(--color-button-secondary);
+	border-radius: 50%;
+	opacity: 1;
+	transition: width 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease;
+}
+
+// 4. Soft-edged rectangle for this slider
+.bestceller::part(bullet-active) {
+	width: 30px;         
+	border-radius: 6px;  
+	background-color: var(--color-button-primary);
+}
+
+@media (max-width: 768px) {
+.bestceller::part(container) {
+	padding-bottom: 5px !important; // Adjusted for better spacing
+}
+}

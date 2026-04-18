@@ -1,0 +1,72 @@
+<main class="bg-[var(--color-bg-card)] px-6 h-min-[100vh] py-10">
+  <section class="categories-section h-full flex flex-col space-y-2 items-center justify-center mt-16">
+    <h2 class="heading">
+      Oxilla best seller
+    </h2>
+    
+    <p class="text-cbase text-csecondary mb-10">Our most-loved products, trusted by thousands</p>
+    
+    <div class="w-full mt-12 overflow-x-hidden">
+      <swiper-container 
+      #bestSellerSwiper
+        class="bestceller"
+        pagination="true" 
+        pagination-clickable="true"
+        slides-per-view="1.5"
+          space-between="15"
+          centered-slides="true"
+          initial-slide="2"
+          watch-slides-progress="true"
+
+          grab-cursor="true"
+          breakpoints='{
+            "640": {
+              "slidesPerView": 2.5,
+              "spaceBetween": 20
+            },
+            "1024": {
+              "slidesPerView": 5,
+              "spaceBetween": 40
+            }
+
+          }'
+      >
+        <swiper-slide *ngFor="let category of categories">
+          <div class="card p-3 flex flex-col items-center rounded-xl justify-center bg-[var(--color-bg-primary)] h-auto relative">
+            <div class="mb-2 w-full p-1 relative">
+              <!-- <div class="overlay w-full h-full absolute z-20 flex items-center justify-center  rounded-lg backdrop-blur-sm">
+                <h4 class="heading text-center">Coming Soon</h4>
+              </div> -->
+              <div class="relative w-full h-64 overflow-hidden rounded-lg mb-2">
+                <img [src]="category.url" class="rounded-lg object-cover w-full h-full" />
+                
+                <!-- <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute top-1 left-2 p-1 z-5">Oxxilia,m vbnm,-</div> -->
+                <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute bottom-1 left-2 p-1 z-5">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute bottom-1 right-2 p-1 z-5">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.87289 17.0194L2.66933 9.83981C2.48735 8.75428 2.39637 8.21152 2.68773 7.85576C2.9791 7.5 3.51461 7.5 4.58564 7.5H19.4144C20.4854 7.5 21.0209 7.5 21.3123 7.85576C21.6036 8.21152 21.5126 8.75428 21.3307 9.83981L20.1271 17.0194C19.7282 19.3991 19.5287 20.5889 18.7143 21.2945C17.9 22 16.726 22 14.3782 22H9.62182C7.27396 22 6.10003 22 5.28565 21.2945C4.47127 20.5889 4.27181 19.3991 3.87289 17.0194Z" stroke="#fff" stroke-width="1.5"/>
+                    <path d="M17.5 7.5C17.5 4.46243 15.0376 2 12 2C8.96243 2 6.5 4.46243 6.5 7.5" stroke="#fff" stroke-width="1.5"/>
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <p class="line-clamp-2">{{category.name}}</p>
+                <div class="flex p-2 justify-between items-center">
+                  <div>
+                    <span class="text-[var(--color-icon-primary)] inline-flex mr-1">{{category.newprice | currency:'USD'}}</span>
+                    <span><s class="text-[var(--color-text-helper)]">{{category.oldprice}}</s></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+    <button class="btn btn-cta-primary">View All Products</button>
+  </section>
+</main>

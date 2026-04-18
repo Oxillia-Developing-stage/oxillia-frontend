@@ -21,5 +21,7 @@
 	"ox-truck": "/assests/icons/ui/truck.svg",
 	"ox-twitter": "/assests/icons/ui/Twitter.svg",
 	"ox-user": "/assests/icons/ui/user.svg",
-	"ox-youtube": "/assests/icons/ui/YouTube.svg"
+	"ox-youtube": "/assests/icons/ui/YouTube.svg",
+    "ox-mobile-menu": "/assests/icons/ui/menu-02.svg",
+    "ox-mobile-logo": "/assests/icons/ui/oxillia-logo-mobile.svg"
 }

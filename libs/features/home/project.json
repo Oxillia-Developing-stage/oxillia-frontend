@@ -1,0 +1,14 @@
+{
+  "name": "features-home",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/home/src",
+  "prefix": "app",
+  "tags": ["type:lib", "scope:features"],
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
+
