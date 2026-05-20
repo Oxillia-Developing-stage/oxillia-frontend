@@ -1,0 +1,11 @@
+<div class="flex h-full flex-col gap-6 rounded-[2rem] bg-[var(--color-bg-card)] p-6 md:p-8">
+  <app-brand-header [brand]="product().brand" />
+  <app-price-section [product]="product()" />
+  <app-media-gallery title="Media" [images]="product().images" rounded="lg" />
+  <app-media-gallery title="Before & After" [images]="product().images" rounded="full" />
+  <app-product-actions
+    [disabled]="!product().stock"
+    (addToCart)="addToCart.emit()"
+    (checkout)="checkout.emit()"
+  />
+</div>

@@ -1,0 +1,26 @@
+<div class="flex items-center gap-3">
+  <img
+    [src]="brand().logo"
+    [alt]="brand().name"
+    class="h-12 w-12 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-card)] object-contain p-1"
+  />
+  <div class="min-w-0">
+    <p class="text-csm font-semibold text-cprimary">{{ brand().name }}</p>
+    <a
+      [routerLink]="['/main/products']"
+      [queryParams]="{ brand: brand()._id }"
+      class="inline-flex items-center gap-1 text-cxs text-[var(--color-button-primary)] hover:underline"
+    >
+      Visit the store
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path
+          d="M3 9L9 3M9 3H4M9 3V8"
+          stroke="currentColor"
+          stroke-width="1.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="space-y-4">
+  <h2 class="heading text-[2rem] leading-tight md:text-[2.25rem]">{{ product().name }}</h2>
+
+  <div class="flex flex-wrap items-center gap-3">
+    <span class="text-cbase font-semibold text-cprimary">{{ product().ratingsAverage | number: '1.1-1' }}</span>
+    <p-rating
+      [ngModel]="product().ratingsAverage"
+      [readonly]="true"
+      [stars]="5"
+      class="product-rating"
+    />
+    <span class="text-csm text-csecondary">{{ product().ratingsQuantity }} Ratings</span>
+  </div>
+
+  <div class="flex flex-wrap items-end gap-3">
+    <span class="text-[2rem] font-bold text-cprimary">
+      {{ pricing().current | currency: 'EGP' : 'symbol' : '1.0-2' }}
+    </span>
+    @if (pricing().original) {
+      <span class="text-cbase text-chelper line-through">
+        {{ pricing().original | currency: 'EGP' : 'symbol' : '1.0-2' }}
+      </span>
+    }
+  </div>
+
+  <div class="flex flex-wrap items-center gap-4">
+    <span
+      class="inline-flex items-center gap-2 rounded-full bg-[color-mix(in_srgb,var(--color-success)_12%,transparent)] px-4 py-2 text-cxs font-medium text-[var(--color-success)]"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 7h15l-1.5 9H7.5L6 7z" />
+        <path d="M6 7L4 3H2" />
+        <circle cx="9" cy="20" r="1" />
+        <circle cx="18" cy="20" r="1" />
+      </svg>
+      {{ product().soldCount }} sold recently
+    </span>
+    <span class="text-csm text-csecondary">Get it by {{ deliveryDate() }}</span>
+  </div>
+</div>

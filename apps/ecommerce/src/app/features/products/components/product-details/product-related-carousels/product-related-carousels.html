@@ -1,0 +1,51 @@
+<div class="space-y-14">
+  @if (brandProducts.length) {
+    <section>
+      <h5 class="heading mb-6">More from {{ brandName }}</h5>
+      <div class="w-full overflow-x-hidden">
+        <swiper-container
+          #brandSwiper
+          class="product-related-swiper"
+          slides-per-view="1.4"
+          space-between="16"
+          grab-cursor="true"
+          breakpoints='{
+            "640": { "slidesPerView": 2.4, "spaceBetween": 18 },
+            "1024": { "slidesPerView": 4, "spaceBetween": 20 }
+          }'
+        >
+          @for (product of brandProducts; track product._id) {
+            <swiper-slide>
+              <app-related-product-card [product]="product" />
+            </swiper-slide>
+          }
+        </swiper-container>
+      </div>
+    </section>
+  }
+
+  @if (browsedProducts.length) {
+    <section>
+      <h5 class="heading mb-6">Previously browsed related</h5>
+      <div class="w-full overflow-x-hidden">
+        <swiper-container
+          #browsedSwiper
+          class="product-related-swiper"
+          slides-per-view="1.4"
+          space-between="16"
+          grab-cursor="true"
+          breakpoints='{
+            "640": { "slidesPerView": 2.4, "spaceBetween": 18 },
+            "1024": { "slidesPerView": 4, "spaceBetween": 20 }
+          }'
+        >
+          @for (product of browsedProducts; track product._id) {
+            <swiper-slide>
+              <app-related-product-card [product]="product" />
+            </swiper-slide>
+          }
+        </swiper-container>
+      </div>
+    </section>
+  }
+</div>

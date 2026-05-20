@@ -1,0 +1,50 @@
+<div class="rounded-[2rem] bg-[var(--color-bg-card)] p-6 md:p-8">
+  <div class="divide-y divide-[var(--color-border-default)]">
+    @for (review of reviews(); track review._id) {
+      <article class="py-6 first:pt-0 last:pb-0">
+        <div class="mb-3 flex items-center justify-between gap-4">
+          <p-rating [ngModel]="review.rating" [readonly]="true" [stars]="5" class="review-rating" />
+          <time class="text-cxs uppercase tracking-wide text-chelper">
+            {{ review.createdAt | date: 'MMM d, y' }}
+          </time>
+        </div>
+
+        <h4 class="mb-2 text-cbase font-semibold text-cprimary">{{ review.title }}</h4>
+        <p class="mb-4 text-cbase leading-relaxed text-csecondary">{{ review.body }}</p>
+
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <img
+              [src]="review.authorAvatar"
+              [alt]="review.authorName"
+              class="h-9 w-9 rounded-full object-cover"
+            />
+            <span class="text-csm font-medium text-cprimary">{{ review.authorName }}</span>
+          </div>
+
+          <div class="flex items-center gap-4 text-cxs text-csecondary">
+            <button type="button" class="inline-flex items-center gap-1 hover:text-cprimary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7 10v12M7 10l-4-4 4-4M7 10h10a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4H11" />
+              </svg>
+              Helpful ({{ review.helpfulCount }})
+            </button>
+            <button type="button" class="inline-flex items-center gap-1 hover:text-cprimary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+              </svg>
+              Translate
+            </button>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+
+  <p-button
+    label="View all comments"
+    [outlined]="true"
+    styleClass="review-view-all mt-6 w-full"
+  />
+</div>
