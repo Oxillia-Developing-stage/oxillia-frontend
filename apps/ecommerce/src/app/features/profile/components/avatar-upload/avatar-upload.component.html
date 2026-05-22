@@ -1,0 +1,15 @@
+<div class="avatar-container">
+  <div class="avatar-wrapper">
+    <img *ngIf="avatarUrl" [src]="avatarUrl" alt="Profile Avatar" class="avatar-image">
+    <div *ngIf="!avatarUrl" class="avatar-placeholder">
+      <span class="placeholder-icon">📷</span>
+    </div>
+    
+    <label class="avatar-overlay">
+      <input type="file" accept="image/*" (change)="onFileChange($event)" hidden>
+      <span class="upload-text">Change</span>
+    </label>
+  </div>
+
+  <p *ngIf="errorMessage" class="avatar-error">{{ errorMessage }}</p>
+</div>

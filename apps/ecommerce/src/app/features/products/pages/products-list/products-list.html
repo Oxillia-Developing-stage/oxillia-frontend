@@ -1,0 +1,58 @@
+<div class="products-page">
+  <app-products-filter [initialParams]="initialFilters" (filtersChange)="onFiltersChange($event)"></app-products-filter>
+
+
+  <section class="products-column">
+    <div *ngIf="loading()" class="loading-wrap">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+
+    <div class="grid">
+      <ng-container *ngIf="products?.data?.length; else empty">
+        <div class="card" *ngFor="let p of products.data">
+          <app-products-card
+            [productid]="p._id"
+            [name]="p.name"
+            [url]="p.images?.[0]"
+            [oldprice]="p.price"
+            [newprice]="p.priceAfterDiscount ?? p.price"
+          ></app-products-card>
+        </div>
+      </ng-container>
+      <ng-template #empty>
+        <div class="empty">No products found.</div>
+      </ng-template>
+    </div>
+
+    <div class="paginator-wrap">
+      <p-paginator
+        [rows]="limit"
+        [totalRecords]="total"
+        [first]="( page - 1 ) * limit"
+        [pageLinkSize]="2"
+        (onPageChange)="onPageChange($event)"
+         template="PrevPageLink PageLinks NextPageLink"
+      >
+        <ng-template pTemplate="previouspagelinkicon">
+          <span class="paginator-text-action font-serif">Back</span>
+        </ng-template>
+        
+        <ng-template pTemplate="nextpagelinkicon">
+          <span class="paginator-text-action font-serif">Next</span>
+        </ng-template>
+    
+    </p-paginator>
+    </div>
+  </section>
+</div>
+<!-- @if(isAuthenticated()){
+    <div>
+      <h5 class="heading">Recommended</h5>
+
+      <app-recommendations [products]="reocommdations" title="Recently Viewed"></app-recommendations>
+    </div>
+  <div>
+         <h5 class="heading">Previously Browsed</h5>
+    <app-browsed [products]="broswedItems" title="Recommended for you"></app-browsed>
+  </div>
+} -->

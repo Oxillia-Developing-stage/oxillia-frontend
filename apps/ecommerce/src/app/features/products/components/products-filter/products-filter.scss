@@ -1,0 +1,248 @@
+
+:host{
+    background-color: var(--color-bg-card);
+    padding:12px;
+    border-radius: 10px;
+}
+
+.filters-column {
+  width: 280px;
+  max-width: 280px; /* Force strict boundary layout encapsulation */
+  box-sizing: border-box;
+}
+.filter-header { font-weight: 600; margin-bottom: 12px; }
+.filter-group { margin-bottom: 16px; width: 100%; }
+.chip { margin-left: 8px; }
+.price-row { display: flex; gap: 8px; align-items: center; }
+
+/* LAYOUT CLASSES TO MATCH MOCKUP IMAGE */
+.flex-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 4px;
+  width: 100%; /* Force child boxes to fold within your 280px wrapper */
+}
+
+.chip-checkbox-box {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 6px 12px;
+  gap: 6px;
+}
+.flex-chip-container{
+  padding: 2px;
+}
+.chip-label {
+  font-size: 14px;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.clickable-chip-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-card) !important;
+  color: var(--color-text-primary);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.clickable-chip-button.selected-chip {
+  background-color: var(--color-button-primary) !important;
+  border-color: var(--color-border-default);
+  color: var(--color-text-secondary) !important;
+  font-weight: 500;
+}
+
+
+ :host ::ng-deep p-accordion.p-accordion *:not(.clickable-chip-button):not(.custom-radio-row):not(.styled-radio-circle):not(.radio-text-label):not(.rating-buttons-container):not(.rating-square-button)  {
+ 
+  /* 1. Global Accordion Reset */
+  p-accordion.p-accordion,
+  p-accordion.p-accordion *:not(.clickable-chip-button), /* This explicitly targets children to beat the Tailwind * reset */
+  .p-accordion {
+    background-color: var(--color-bg-primary) !important;
+    border-color: transparent !important;
+  }
+  .p-accordionpanel{
+    padding: 1px !important;
+  }
+  /* 2. Header Element */
+  p-accordion-header.p-accordionheader,
+  p-accordion-header.p-accordionheader:hover,
+  p-accordion-header.p-accordionheader:focus,
+  
+  p-accordion-header.p-accordionheader *:not(.clickable-chip-button) {
+    padding: 1px  !important;
+    color: var(--color-text-primary) !important;
+    background-color: var(--color-bg-primary) !important;
+    background: var(--color-bg-primary) !important;
+    border: none !important;
+     /* Optional: Add a subtle hover effect */
+     transition: background-color 0.2s ease-in-out;
+  }
+
+  /* 3. Outer Content Block */
+  // p-accordion-content.p-accordioncontent,
+  // p-accordion-content.p-accordioncontent *:not(.clickable-chip-button) {
+  //   // background-color: var(--color-bg-primary) !important;
+  //   // background: var(--color-bg-primary) !important;
+  //   // border: none !important;
+  // }
+
+  /* 4. Core inner template wrappers */
+  .p-accordioncontent-wrapper,
+  .p-accordioncontent-content {
+    background-color: var(--color-bg-primary) !important;
+    background: var(--color-bg-primary) !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+}
+/* TARGET PRIMENG CHECKBOX COMPONENT STATES DEEPLY */
+:host ::ng-deep {
+  /* 1. Base UNSELECTED State Styles */
+  .p-checkbox .p-checkbox-box {
+    background-color: var(--color-background-primary) !important;
+    border: 1.5px solid var(--color-text-secondary) !important; /* Fixed typo secondry -> secondary */
+    border-radius: 4px !important; /* Kept standard clean corner profile radius */
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* 2. Hover Interaction State Overrides */
+  .p-checkbox:not(.p-checkbox-disabled):hover .p-checkbox-box {
+    border-color: var(--color-button-primary) !important;
+  }
+
+  /* 3. ACTIVE SELECTED State Styles (Checked/Highlighted) */
+  .p-checkbox-checked .p-checkbox-box,
+  .p-checkbox.p-highlight .p-checkbox-box {
+    background-color: var(--color-button-primary) !important;
+    border-color: var(--color-button-primary) !important;
+  }
+
+  /* 4. Inside Validation Checkmark Icon Sizing/Coloration */
+  .p-checkbox-icon {
+    color: #ffffff !important; /* Forces the checkmark icon stroke to stay crisp white */
+    font-size: 11px !important;
+  }
+}
+
+
+
+
+
+
+
+//radio buttons 
+/* Radio layout container column stack alignment rules */
+.radio-list-container {
+  display: flex;
+  flex-direction: col;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 4px;
+  width: 100%;
+}
+
+.custom-radio-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+}
+
+/* Completely hide native default browser checkboxes layout styling completely */
+.hidden-radio-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Mockup radio hollow matching circle definition design properties */
+.styled-radio-circle {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #b4b6c4; /* Dull lavender silver ring border matching design frame mockup */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+/* Hide SVG icon indicator inside standard hollow unselected circles */
+.styled-radio-circle .check-icon {
+  display: none;
+}
+
+.radio-text-label {
+  font-size: 16px;
+  color: #555770; /* Text hue layer mapping properties matching font profiles precisely */
+  text-transform: capitalize;
+}
+
+/* Intercept checked property logic to load filled purple validation state */
+.hidden-radio-input:checked + .styled-radio-circle {
+  background-color: #6366f1; /* Mockup vibrant purple button selection background layer theme */
+  border-color: #6366f1;
+}
+
+/* Reveal check icon when input state resolves as checked */
+.hidden-radio-input:checked + .styled-radio-circle .check-icon {
+  display: block;
+}
+
+/* Horizontal button flex alignment row packaging layout */
+.rating-buttons-container {
+  display: flex;
+  gap: 12px;
+  padding: 8px 2px;
+  width: 100%;
+}
+
+/* Base style profile generating the white square look */
+.rating-square-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background-color: #ffffff;
+  color: #1e293b;
+  border: 1px solid transparent; /* Keeps sizing stable before active borders attach */
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #f8fafc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* Active checked accent coloring state matching the mockup image */
+.rating-square-button.selected-rating {
+  background-color: #ffffff !important;
+  border: 1.5px solid #6366f1 !important; /* Mockup purple frame line color border */
+  color: #6366f1 !important; /* Mockup clean purple numerical label styling color */
+}

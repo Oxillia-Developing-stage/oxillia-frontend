@@ -1,0 +1,13 @@
+<div class="wishlist-container">
+  <h2>My Wishlist</h2>
+  <div class="wishlist-grid">
+    <div class="wishlist-item" *ngFor="let item of wishlistItems">
+      <div class="item-placeholder"></div>
+      <div class="item-info">
+        <h4>{{ item.name }}</h4>
+        <p>${{ item.price }}</p>
+        <button class="btn btn-cta-secondary">Move to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>

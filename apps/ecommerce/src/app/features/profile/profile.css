@@ -1,0 +1,152 @@
+.account-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.account-header {
+  margin-bottom: 32px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-secondary, #666);
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-text-primary, #333);
+  margin: 0;
+  font-family: serif; /* Matching the design screenshot 'Account' */
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #666);
+}
+
+.address-textarea {
+  resize: vertical;
+}
+
+.addresses-section {
+  margin-top: 16px;
+}
+
+.address-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .address-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.address-card {
+  border: 1px solid var(--color-border, #eaeaea);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-bg-card, #fff);
+  position: relative;
+}
+
+.address-details p {
+  margin: 0 0 8px 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #666);
+}
+
+.address-details .address-name {
+  color: var(--color-text-primary, #333);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.address-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  border-top: 1px solid var(--color-border, #eaeaea);
+  padding-top: 16px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.edit-btn {
+  color: #3b82f6; /* info blue */
+}
+
+.delete-btn {
+  color: #ef4444; /* danger red */
+}
+
+.add-new-card {
+  border: 1px dashed var(--color-border, #eaeaea);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.add-new-card:hover {
+  background-color: var(--color-bg-hover, #fafafa);
+}
+
+.plus-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #8b5cf6; /* primary purple */
+  color: #8b5cf6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.add-new-text {
+  color: var(--color-text-secondary, #666);
+  font-size: 1rem;
+}
+
+.form-actions {
+  margin-top: 32px;
+}
+
+.save-btn {
+  width: 100%;
+}

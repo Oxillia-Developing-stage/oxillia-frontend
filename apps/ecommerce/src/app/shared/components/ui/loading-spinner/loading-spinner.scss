@@ -1,0 +1,21 @@
+.loading-spinner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 24px;
+  color: var(--color-text-secondary);
+}
+
+.loading-spinner__icon {
+  width: 54px;
+  height: 54px;
+  color: var(--color-button-primary);
+}
+
+.loading-spinner__text {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}

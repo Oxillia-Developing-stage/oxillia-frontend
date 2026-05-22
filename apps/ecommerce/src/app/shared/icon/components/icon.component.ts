@@ -62,14 +62,16 @@ getResponsiveSize(baseSize: number): number {
   ) {}
 
   ngOnInit() {
-    const icon = this.iconService.getIcon(this.name);
-    if (!icon) {
-      return;
-    }
-        const coloredSvg = icon.replace(/currentColor/g, this.color)
-        .replace(/#161616/g, this.color)  // Replace dark gray
-        .replace(/#CCCCCC/g, this.color); // Replace light gray;
+    this.iconService.loadIcon(this.name).subscribe((icon) => {
+      if (!icon) {
+        return;
+      }
 
-    this.svg = this.sanitizer.bypassSecurityTrustHtml(coloredSvg);
+      const coloredSvg = icon.replace(/currentColor/g, this.color)
+        .replace(/#161616/g, this.color)
+        .replace(/#CCCCCC/g, this.color);
+
+      this.svg = this.sanitizer.bypassSecurityTrustHtml(coloredSvg);
+    });
   }
 }

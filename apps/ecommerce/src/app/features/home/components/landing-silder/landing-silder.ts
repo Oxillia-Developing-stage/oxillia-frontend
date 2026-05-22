@@ -1,23 +1,36 @@
-import { Component, ViewChild, ElementRef, Inject, PLATFORM_ID, inject } from '@angular/core';
+import { Component, ViewChild, ElementRef, Inject, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+import { ProductItem } from 'apps/ecommerce/src/app/shared/interfacers/products';
+import { HomeService } from '../../home.service';
+import { ProductsCard } from 'apps/ecommerce/src/app/shared/components/products-card/products-card';
 
 register();
 
 @Component({
   selector: 'app-landing-silder',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe],
+  imports: [CommonModule, CurrencyPipe, ProductsCard],
   templateUrl: './landing-silder.html',
   styleUrl: './landing-silder.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   host: { ngSkipHydration: '' }
 })
 export class LandingSilder {
-   private platformId: Object = inject(PLATFORM_ID);
+   private platformId: object = inject(PLATFORM_ID);
     // constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   @ViewChild('bestSellerSwiper') swiperEl!: ElementRef;
+
+  products: ProductItem[] = [];
+  _HomeService = inject(HomeService);
+  private cd = inject(ChangeDetectorRef)
+  ngOnInit(){
+    this._HomeService.getBestSellers().subscribe((response)=>{
+      this.products = response.data;
+      this.cd.detectChanges(); // Ensure the view updates with the new products
+    })
+  }
     categories =[
   {
     name:'Oxxila Acne Treatment Cream  100 ml',

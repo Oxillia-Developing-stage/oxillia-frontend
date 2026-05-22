@@ -56,12 +56,47 @@ h6.heading {
   color: var(--color-text-primary);
 }
 
+//weights 
+.regular{
+font-weight: #{$font-weight-regular}
+}
+.medium{
+  font-weight: #{$font-weight-medium}
+}
+.semibold{
+  font-weight: #{$font-weight-semibold}
+}
+.bold{
+    font-weight: #{$font-weight-bold}
+}
+
+.heavy{
+    font-weight: #{$font-weight-heavy}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Paragraphs
 p {
   @include text-base-responsive;
   color: var(--color-text-primary);
   margin-bottom: 1rem;
 }
+
 
 // Links
 a {

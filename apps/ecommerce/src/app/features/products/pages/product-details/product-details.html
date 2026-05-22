@@ -3,7 +3,7 @@
     <app-loading-spinner />
   </div>
 } @else if (product(); as currentProduct) {
-  <div class="product-details-page mx-auto flex w-full max-w-[1400px] flex-col gap-16 px-4 py-8 md:px-8 md:py-12">
+  <div class="product-details-page mx-auto flex w-full max-w-[1400px] flex-col gap-16 px-4 py-8  md:py-12">
     <app-product-details-hero
       [product]="currentProduct"
       (addToCart)="onAddToCart()"

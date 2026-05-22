@@ -1,0 +1,18 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/libs/features/auth",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": [],
+    "lib": ["dom", "es2020"]
+  },
+  "exclude": [
+    "src/test-setup.ts",
+    "src/**/*.spec.ts",
+    "jest.config.ts",
+    "src/**/*.test.ts"
+  ],
+  "include": ["src/**/*.ts"]
+}

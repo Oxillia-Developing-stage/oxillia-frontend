@@ -1,0 +1,23 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="onClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>{{ initial && initial._id ? 'Edit Address' : 'Add New Address' }}</h3>
+      <button class="close-btn" (click)="onClose()">
+        <lucide-icon [img]="XIcon" size="20"></lucide-icon>
+      </button>
+    </div>
+    <form [formGroup]="addressForm" (ngSubmit)="onSave()" class="modal-body">
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" formControlName="city" class="form-input" placeholder="Your City">
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" formControlName="address" class="form-input" placeholder="Enter full address">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-cta-primary" [disabled]="addressForm.invalid">Save Address</button>
+      </div>
+    </form>
+  </div>
+</div>

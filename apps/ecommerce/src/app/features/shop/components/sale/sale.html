@@ -1,0 +1,74 @@
+<!-- <section class="sale-banner" aria-labelledby="sale-banner-title">
+	<div class="sale-banner__content">
+		<h2 id="sale-banner-title" class="sale-banner__headline">Big Sale !!</h2>
+
+		<div class="sale-banner__medallion" aria-hidden="true">
+			<svg class="sale-banner__lock" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+				<path
+					d="M22 28V21C22 15.477 26.477 11 32 11C37.523 11 42 15.477 42 21V28"
+					stroke="currentColor"
+					stroke-width="6"
+					stroke-linecap="round"
+				/>
+				<rect x="16" y="28" width="32" height="26" rx="8" fill="currentColor" />
+				<circle cx="32" cy="41" r="4" fill="#6e59f1" />
+			</svg>
+		</div>
+
+		<div class="sale-banner__countdown" aria-label="Sale opens in 00 hours 45 minutes and 13 seconds">
+			<span class="sale-banner__eyebrow">open in</span>
+			<span class="sale-banner__time">{{ countdown }}</span>
+		</div>
+	</div>
+</section> -->
+
+<section class="sale-banner" [class.is-active]="offerStatus() === 'ACTIVE'">
+  <div class="sale-banner__content">
+    @if (offer()) {
+    @if (offerStatus() === 'LOCKED') {
+      <h2 class="sale-banner__headline">Upcoming Offer</h2>
+      
+      <div class="sale-banner__medallion">
+        <!-- Your Lock SVG remains here -->
+        <svg class="sale-banner__lock" viewBox="0 0 64 64">...</svg>
+      </div>
+
+<div class="sale-banner__countdown">
+  <span class="sale-banner__eyebrow">open in</span>
+  <span class="sale-banner__time">{{ countdown() }}</span>
+</div>
+
+    }
+
+    @if (offerStatus() === 'ACTIVE') {
+      <div class="product-reveal-wrapper">
+        <img [src]="offer().product.images[0]" [alt]="offer().product.name" class="product-img" />
+        
+        <div class="product-info">
+          <h2 class="product-name">{{ offer().product.name }}</h2>
+          <div class="pricing">
+             <span class="discount-badge">-{{ offer().product.discountPercent }}%</span>
+             <span class="price">${{ offer().product.price }}</span>
+          </div>
+        </div>
+      </div>
+
+<div class="sale-banner__countdown">
+  <span class="sale-banner__eyebrow">ends in</span>
+  <span class="sale-banner__time">{{ countdown() }}</span>
+</div>
+    }
+
+    @if (offerStatus() === 'EXPIRED') {
+      <h2 class="sale-banner__headline">Offer Ended</h2>
+    }
+
+}
+@else {
+    <!-- Optional Loading Spinner -->
+    <div class="sale-banner__content">
+      <h2 class="sale-banner__headline">Loading...</h2>
+    </div>
+  }
+  </div>
+</section>

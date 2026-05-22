@@ -1,0 +1,20 @@
+<section class="reasons-section">
+  <header class="reasons-section__header">
+    <h2 class="reasons-section__title">More reasons to shop</h2>
+  </header>
+
+  <div class="reasons-layout">
+    @for (card of cards; track card.title) {
+      <div class="reasons-layout__item" [class]="card.className">
+        <app-reasons-card
+          [title]="card.title"
+          [subtitle]="card.subtitle"
+          [image]="card.image"
+          [alt]="card.alt"
+          [tone]="card.tone"
+          [size]="card.size"
+        ></app-reasons-card>
+      </div>
+    }
+  </div>
+</section>

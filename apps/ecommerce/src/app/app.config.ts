@@ -8,10 +8,12 @@ import { provideEffects } from '@ngrx/effects';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideAppInitializer } from '@angular/core';
 import { IconService } from './shared/icon/services/icon.service';
-
+import { authenticationInterceptor } from './core/interceptors/authentication-interceptor';
+import { loadingInterceptor } from './core/interceptors/loading-interceptor';
+import { MessageService } from 'primeng/api';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -23,14 +25,21 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
             theme: {
-                preset: Aura
+                preset: Aura,
+                options:{
+                  cssLayer:{
+                    name:'primeng',
+                    order: 'tailwind-base, primeng, tailwind-utilities'
+                  }
+                }
             }
         }),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([loadingInterceptor, authenticationInterceptor])),
      provideAppInitializer(() => {
       const iconService = inject(IconService);
-      return iconService.loadIcons();
-    })
+      return iconService.loadManifest();
+    }),
+    MessageService
       ]
 };
 

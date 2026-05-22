@@ -1,0 +1,9 @@
+{
+  "name": "@oxillia/features-auth",
+  "version": "0.0.1",
+  "description": "Authentication feature library",
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0"
+  }
+}

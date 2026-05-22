@@ -31,16 +31,20 @@
 
           }'
       >
-        <swiper-slide *ngFor="let category of categories">
-          <div class="card p-3 flex flex-col items-center rounded-xl justify-center bg-[var(--color-bg-primary)] h-auto relative">
+        <swiper-slide *ngFor="let product of products">
+          <app-products-card
+          [productid]="product.id"
+          [name]="product.name"
+          [url]="product.url"
+          [newprice]="product.newprice"
+          [oldprice]="product.oldprice"
+          ></app-products-card>
+          <!-- <div class="card p-3 flex flex-col items-center rounded-xl justify-center bg-[var(--color-bg-primary)] h-auto relative">
             <div class="mb-2 w-full p-1 relative">
-              <!-- <div class="overlay w-full h-full absolute z-20 flex items-center justify-center  rounded-lg backdrop-blur-sm">
-                <h4 class="heading text-center">Coming Soon</h4>
-              </div> -->
+
               <div class="relative w-full h-64 overflow-hidden rounded-lg mb-2">
                 <img [src]="category.url" class="rounded-lg object-cover w-full h-full" />
                 
-                <!-- <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute top-1 left-2 p-1 z-5">Oxxilia,m vbnm,-</div> -->
                 <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute bottom-1 left-2 p-1 z-5">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
@@ -63,10 +67,20 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </swiper-slide>
       </swiper-container>
     </div>
     <button class="btn btn-cta-primary">View All Products</button>
   </section>
 </main>
+
+
+
+
+              <!-- <div class="overlay w-full h-full absolute z-20 flex items-center justify-center  rounded-lg backdrop-blur-sm">
+                <h4 class="heading text-center">Coming Soon</h4>
+              </div> -->
+
+
+                              <!-- <div class="text-cxs text-cprimary bg-[var(--color-button-secondary)] rounded-2xl absolute top-1 left-2 p-1 z-5">Oxxilia,m vbnm,-</div> -->
