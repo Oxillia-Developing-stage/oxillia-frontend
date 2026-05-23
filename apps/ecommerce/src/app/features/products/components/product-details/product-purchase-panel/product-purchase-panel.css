@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+::ng-deep .product-rating .p-rating-icon {
+  color: #f5b301;
+}

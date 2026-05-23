@@ -21,6 +21,43 @@ border-radius: 5%;
   height: 100%;
   z-index: 1;
 }
+
+.hero__container {
+  min-height: 100%;
+}
+
+.hero__visual {
+  width: 100%;
+  height: clamp(24rem, 56vw, 38rem);
+  max-height: calc(100svh - 14rem);
+  align-items: end;
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.hero__main-img,
+.hero__left-img,
+.hero__right-img {
+  min-height: 0;
+}
+
+.hero__main-img img {
+  height: 100%;
+  max-height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .hero__visual {
+    height: clamp(22rem, 62vw, 34rem);
+    max-height: calc(100svh - 12rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__visual {
+    height: clamp(18rem, 78vw, 28rem);
+    max-height: calc(100svh - 10rem);
+  }
+}
 .hero__left-img {
     border-radius: 0% 10% 0% 5%;
     background-color: white;

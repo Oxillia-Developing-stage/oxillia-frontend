@@ -1,0 +1,38 @@
+<div class="h-screen w-full bg-[var(--color-bg-card)] px-8 py-12 flex flex-col  ">
+	<div class="text-center">
+		<h2 class="heading regular">Welcome Back</h2>
+		<p class="text-secondary regular">Happy to see you again</p>
+	</div>
+
+		<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" class="flex-1 flex flex-col gap-3 justify-center">
+            <app-form-input
+			[id]="'name'"
+			[label]="'Full Name'"
+			[type]="'text'"
+			formControlName="name"
+			placeholder="John Doe"
+			/>
+                <app-form-input
+			[id]="'email'"
+			[label]="'Email Address'"
+			[type]="'email'"
+			formControlName="email"
+			placeholder="Example@example.com"
+			/>
+
+			<app-form-input
+			[id]="'password'"
+			[label]="'Password'"
+			[type]="'password'"
+			formControlName="password"
+			placeholder="Min. 8 characters"
+			/>
+			<p class="text-sm text-[var(--color-button-primary)] w-full flex justify-end">
+				<a>Forgot  password? </a>
+			</p>
+			<button type="submit" class="btn btn-cta-primary w-full">
+				Sign Up
+			</button>
+		</form>
+	{{text}}
+</div>

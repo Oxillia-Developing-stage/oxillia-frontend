@@ -1,0 +1,100 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f0f13;
+  --surface: #18181f;
+  --border: #2a2a38;
+  --text: #e8e8f0;
+  --muted: #7a7a9a;
+  --accent: #6c63ff;
+  --accent-hover: #574fd6;
+  --danger: #ff5c6a;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+h1 { font-size: 1.6rem; font-weight: 700; }
+
+.muted { color: var(--muted); font-size: 0.925rem; line-height: 1.55; }
+.muted.small { font-size: 0.85rem; }
+
+.alert {
+  background: rgba(255, 92, 106, 0.12);
+  border: 1px solid rgba(255, 92, 106, 0.35);
+  color: var(--danger);
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+/* Google button */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+}
+.google-btn:hover { background: #202030; border-color: #44445a; }
+
+/* Generic outline button */
+.btn-outline {
+  padding: 0.65rem 1.2rem;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.18s;
+  align-self: flex-start;
+}
+.btn-outline:hover { background: #202030; }
+
+.badge {
+  background: rgba(108, 99, 255, 0.18);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }

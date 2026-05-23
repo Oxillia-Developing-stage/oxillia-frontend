@@ -1,0 +1,25 @@
+<div class="rounded-[2rem] bg-[var(--color-bg-card)] p-6 shadow-sm md:p-8">
+  <div class="mb-6 flex items-center gap-3">
+    <span class="text-[3rem] font-bold leading-none text-cprimary">{{ average() | number: '1.1-1' }}</span>
+    <div>
+      <p-rating [ngModel]="average()" [readonly]="true" [stars]="5" class="review-rating" />
+      <p class="mt-1 text-csm text-csecondary">Based on {{ total() }} reviews</p>
+    </div>
+  </div>
+
+  <div class="mb-8 space-y-3">
+    @for (row of distribution(); track row.stars) {
+      <div class="flex items-center gap-3 text-cxs text-csecondary">
+        <span class="w-3">{{ row.stars }}</span>
+        <p-progressBar
+          [value]="row.percentage"
+          [showValue]="false"
+          styleClass="review-progress flex-1"
+        />
+        <span class="w-10 text-right">{{ row.percentage }}%</span>
+      </div>
+    }
+  </div>
+
+  <p-button label="Write a review" styleClass="review-write-btn w-full" />
+</div>

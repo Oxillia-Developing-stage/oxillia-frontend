@@ -1,0 +1,225 @@
+:host {
+	display: block;
+	width: 100%;
+}
+
+.sale-banner {
+	position: relative;
+	overflow: hidden;
+	min-height: clamp(8rem, 16vw, 10.5rem);
+	border-radius: 0;
+	background: linear-gradient(180deg, #dcd7eb 0%, #cfc8df 100%);
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+	isolation: isolate;
+}
+
+.sale-banner::before,
+.sale-banner::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.sale-banner::before {
+	background: linear-gradient(180deg, #ffffff 0%, #f7f4fb 100%);
+	clip-path: polygon(0 0, 45% 0, 29% 100%, 0 100%);
+	z-index: 0;
+}
+
+.sale-banner::after {
+	background: linear-gradient(90deg, #7b65fb 0%, #6b55f0 38%, #3a226f 72%, #06030a 100%);
+	clip-path: polygon(39% 0, 100% 0, 100% 100%, 24% 100%);
+	z-index: 0;
+}
+
+.sale-banner__content {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	height: 100%;
+	padding: clamp(1.15rem, 2.6vw, 2rem) clamp(1.25rem, 3.5vw, 2.5rem);
+	font-family: 'Avenir Next', 'Montserrat', 'Segoe UI', sans-serif;
+}
+
+.sale-banner__headline {
+	margin: 0;
+	max-width: 12ch;
+	color: #5a5791;
+	font-size: clamp(2.75rem, 5.5vw, 4.3rem);
+	line-height: 0.92;
+	font-weight: 800;
+	letter-spacing: -0.05em;
+	text-wrap: balance;
+}
+
+.sale-banner__medallion {
+	position: absolute;
+	left: 49.5%;
+	top: 50%;
+	z-index: 2;
+	display: grid;
+	place-items: center;
+	width: clamp(5.6rem, 10vw, 7.2rem);
+	aspect-ratio: 1;
+	border-radius: 999px;
+	background: radial-gradient(circle at 35% 32%, #7d68ff 0%, #6e58f1 44%, #5941cd 100%);
+	transform: translate(-50%, -50%);
+	box-shadow: 0 10px 24px rgba(18, 11, 43, 0.18);
+}
+
+.sale-banner__lock {
+	width: 58%;
+	height: 58%;
+	color: #17131e;
+}
+
+.sale-banner__countdown {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: auto;
+	color: #ffffff;
+}
+
+.sale-banner__eyebrow {
+	font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+	line-height: 1;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	opacity: 0.95;
+}
+
+.sale-banner__time {
+	margin-top: 0.08em;
+	font-size: clamp(2.1rem, 5.4vw, 4rem);
+	line-height: 0.95;
+	font-weight: 800;
+	letter-spacing: -0.06em;
+}
+
+@media (max-width: 760px) {
+	.sale-banner::before {
+		clip-path: polygon(0 0, 60% 0, 35% 100%, 0 100%);
+	}
+
+	.sale-banner::after {
+		clip-path: polygon(34% 0, 100% 0, 100% 100%, 28% 100%);
+	}
+
+	.sale-banner__content {
+		flex-wrap: wrap;
+		justify-content: center;
+		text-align: center;
+		gap: 0.75rem 1rem;
+		padding-inline: 1rem;
+	}
+
+	.sale-banner__headline {
+		order: 1;
+		max-width: none;
+		width: 100%;
+	}
+
+	.sale-banner__medallion {
+		position: relative;
+		left: auto;
+		top: auto;
+		order: 2;
+		transform: none;
+		margin-inline: auto;
+	}
+
+	.sale-banner__countdown {
+		order: 3;
+		width: 100%;
+		align-items: center;
+	}
+}
+
+@media (max-width: 520px) {
+	.sale-banner {
+		min-height: 10rem;
+	}
+
+	.sale-banner__headline {
+		font-size: clamp(2.2rem, 13vw, 3rem);
+	}
+
+	.sale-banner__time {
+		font-size: clamp(1.8rem, 11vw, 2.6rem);
+	}
+}
+
+@media (max-width: 520px) {
+  .sale-banner__time {
+    /* Slightly smaller font to accommodate the "d" and extra digits */
+    font-size: clamp(1.6rem, 9vw, 2.2rem); 
+    white-space: nowrap;
+  }
+}
+
+
+
+
+
+
+/* Animation for when the lock disappears and product appears */
+.product-reveal {
+  animation: slideUp 0.5s ease-out;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name { font-weight: 800; font-size: 1.5rem; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Optional: Change banner color when active */
+.sale-banner.is-active::after {
+  background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%);
+}
+
+
+.product-reveal-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  animation: slideUp 0.5s ease-out;
+}
+
+.product-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-name {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.discount-badge {
+  background: #ff4b2b;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.price {
+  color: white;
+  font-weight: 600;
+}

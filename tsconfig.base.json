@@ -17,6 +17,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@oxillia/features-auth": ["libs/features/auth/src/public-api.ts"],
       "@oxillia/shared-styles": ["libs/shared-styles/src/index.ts"]
     }
   },

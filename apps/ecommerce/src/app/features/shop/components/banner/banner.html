@@ -1,0 +1,34 @@
+<section class="banner-section">
+  <swiper-container
+    #bannerSwiper
+    class="heroSwiper"
+    effect="coverflow"
+    pagination="true"
+    pagination-clickable="true"
+    slides-per-view="auto"
+    centered-slides="true"
+    initial-slide="2"
+
+    loop="true"
+    speed="700"
+    grab-cursor="true"
+    coverflow-effect-rotate="0"
+    coverflow-effect-stretch="300"
+    coverflow-effect-depth="0"
+    coverflow-effect-modifier="1"
+    coverflow-effect-slide-shadows="false"
+  >
+    @for (banner of banners(); track banner.id) {
+      <swiper-slide>
+        <button
+          type="button"
+          class="banner-card"
+          [attr.aria-label]="banner.title"
+          (click)="onBannerClick(banner)"
+        >
+          <img [src]="banner.image" [alt]="banner.title" loading="lazy" />
+        </button>
+      </swiper-slide>
+    }
+  </swiper-container>
+</section>

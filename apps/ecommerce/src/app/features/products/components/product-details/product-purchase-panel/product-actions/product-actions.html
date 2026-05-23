@@ -1,0 +1,15 @@
+<div class="flex flex-col gap-3 sm:flex-row">
+  <p-button
+    label="Add to Cart"
+    [disabled]="disabled()"
+    (onClick)="addToCart.emit()"
+    styleClass="product-cta product-cta--primary w-full"
+  />
+  <p-button
+    label="One Click Checkout"
+    [outlined]="true"
+    [disabled]="disabled()"
+    (onClick)="checkout.emit()"
+    styleClass="product-cta product-cta--outline w-full"
+  />
+</div>

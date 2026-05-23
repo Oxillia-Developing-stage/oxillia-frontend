@@ -1,0 +1,16 @@
+@if (displayImages().length) {
+  <div class="space-y-3">
+    <h6 class="text-csm font-semibold text-cprimary">{{ title() }}</h6>
+    <div class="grid grid-cols-4 gap-2">
+      @for (image of displayImages(); track $index) {
+        <img
+          [src]="image"
+          [alt]="title() + ' thumbnail'"
+          class="aspect-square w-full object-cover"
+          [class.rounded-2xl]="rounded() === 'lg'"
+          [class.rounded-full]="rounded() === 'full'"
+        />
+      }
+    </div>
+  </div>
+}

@@ -1,0 +1,23 @@
+<section class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+  <div class="space-y-5">
+    <h3 class="heading">Questions & Safety</h3>
+    <p class="max-w-md text-cbase text-csecondary">
+      Concerns regarding clinical usage and ingredient interactions.
+    </p>
+    <p-button
+      label="Ask a specialist"
+      styleClass="faq-cta w-full max-w-sm"
+    />
+  </div>
+
+  <p-accordion [value]="0" class="product-faq-accordion w-full">
+    @for (item of items(); track item.id; let i = $index) {
+      <p-accordion-panel [value]="i" class="faq-panel">
+        <p-accordion-header>{{ item.question }}</p-accordion-header>
+        <p-accordion-content>
+          <p class="text-cbase leading-relaxed text-csecondary">{{ item.answer }}</p>
+        </p-accordion-content>
+      </p-accordion-panel>
+    }
+  </p-accordion>
+</section>

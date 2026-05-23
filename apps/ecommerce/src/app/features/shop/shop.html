@@ -1,0 +1,53 @@
+<div class="shop-page px-5 flex flex-col gap-3 py-1">
+
+
+
+<!-- swiper -->
+
+
+
+<app-banner></app-banner>
+
+<!-- categories -->
+ <div>
+<div class="flex gap-2  w-full justify-center flex-wrap ">
+ @for (item of categories(); track $index) {
+
+   <app-category-card [image]="item.image" [name]="item.name"></app-category-card>
+ }
+</div>
+</div>
+
+<!-- statsic reasons why to shop with us -->
+ <div>
+<app-reasons></app-reasons>
+</div>
+@if (isAuthenticated()) {
+<!-- recommended -->
+      <h5 class="heading">Recommended</h5>
+  <app-recommendations [products]="products()"></app-recommendations>
+
+  <!-- previously browsed -->
+   <div>
+     <h5 class="heading">Previously Browsed</h5>
+     <app-browsed [products]="browsed()"></app-browsed>
+</div>
+}
+   <!-- sales -->
+    <app-sale [offer]="offer()"></app-sale>
+   <!-- brands -->
+    <div>
+    <h5 class="heading">Brands</h5>
+<div class="flex gap-1 ">
+  @for (brand of brands(); track $index) {
+    <app-brand-card [image]="brand.logo" [name]="brand.name" class="w-1/5"></app-brand-card>
+  }
+</div>
+</div>
+
+    <!-- skin concern -->
+     <div>
+          <h5 class="heading">Skin Concern</h5>
+       <app-skin-concern></app-skin-concern>
+     </div>
+</div>

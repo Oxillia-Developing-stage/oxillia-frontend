@@ -1,0 +1,227 @@
+<aside class="filters-column">
+    <div class="flex w-full items-center justify-between mb-4 border-b border-b-[var(--color-border-default)] pb-2">
+        <h6 class="heading">Filters</h6>
+        <button 
+            type="button"
+            (click)="clearAllFilters()"
+            [disabled]="!hasActiveFilters()"
+            [class]="!hasActiveFilters() 
+              ? 'text-sm font-medium text-[var(--color-text-secondary)] opacity-40 cursor-not-allowed select-none' 
+              : 'text-sm font-medium text-[var(--color-button-primary)] opacity-100 cursor-pointer hover:underline'">
+            clear all
+          </button>
+    </div>
+
+  <!-- Search Input Block -->
+  <!-- <div class="filter-group">
+    <label>Search</label>
+    <input type="text" [(ngModel)]="searchKeyword" (ngModelChange)="emitFilters()" placeholder="Search products..." />
+  </div> -->
+  <!-- Sensitive Skin Toggle Button Container -->
+  <div class="filter-group">
+    <p-checkbox [(ngModel)]="isSensitive" [binary]="true" (onChange)="emitFilters()"></p-checkbox>
+    <label class="chip">Sensitive Skin</label>
+  </div>
+  <!-- Collapsible Categories Accordion -->
+  <!-- Collapsible Categories Accordion (Maintains identical button view but handles single selection) -->
+  <div class="filter-group">
+    <p-accordion [value]="['0']">
+      <p-accordion-panel value="0">
+        <p-accordion-header>Categories</p-accordion-header>
+        <p-accordion-content>
+          <div class="flex-chip-container">
+            @for (cat of categories(); track cat._id) {
+              <button 
+                type="button"
+                [class.selected-chip]="selectedCategoryIds.includes(cat._id)"
+                (click)="toggleFilterId('category', cat._id)"
+                class="clickable-chip-button">
+                {{ cat.name }}
+              </button>
+            } @empty {
+              <span class="chip-label opacity-50">No categories found</span>
+            }
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </div>
+
+
+  <!-- sub catgeories Accordion -->
+
+
+  <!-- Collapsible Concerns Accordion -->
+  <div class="filter-group">
+    <p-accordion [value]="['0']">
+      <p-accordion-panel value="0">
+        <p-accordion-header>Concerns</p-accordion-header>
+        <p-accordion-content>
+          <div class="flex-chip-container">
+            <div class="chip-checkbox-box">
+              <p-checkbox [(ngModel)]="selectedConcerns" value="acne" [binary]="false" (onChange)="emitFilters()"></p-checkbox>
+              <span class="chip-label">Acne</span>
+            </div>
+            <div class="chip-checkbox-box">
+              <p-checkbox [(ngModel)]="selectedConcerns" value="pimples" [binary]="false" (onChange)="emitFilters()"></p-checkbox>
+              <span class="chip-label">Pimples</span>
+            </div>
+            <div class="chip-checkbox-box">
+              <p-checkbox [(ngModel)]="selectedConcerns" value="pigmentation" [binary]="false" (onChange)="emitFilters()"></p-checkbox>
+              <span class="chip-label">Pigmentation</span>
+            </div>
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </div>
+  
+    <!-- Collapsible Price Sort Accordion -->
+  <div class="filter-group">
+    <p-accordion [value]="['0']">
+      <p-accordion-panel value="0">
+        <p-accordion-header>Price</p-accordion-header>
+        <p-accordion-content>
+          <div class="radio-list-container">
+            
+            <!-- All Option -->
+            <label class="custom-radio-row">
+              <input 
+                type="radio" 
+                name="priceSort" 
+                value="all" 
+                [(ngModel)]="priceSortSelection" 
+                (change)="onPriceSortChange()" 
+                class="hidden-radio-input" />
+              <div class="styled-radio-circle">
+                <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="w3.org">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="radio-text-label">All</span>
+            </label>
+
+            <!-- Low to High Option -->
+            <label class="custom-radio-row">
+              <input 
+                type="radio" 
+                name="priceSort" 
+                value="price:asc" 
+                [(ngModel)]="priceSortSelection" 
+                (change)="onPriceSortChange()" 
+                class="hidden-radio-input" />
+              <div class="styled-radio-circle">
+                <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="w3.org">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="radio-text-label">Low to high</span>
+            </label>
+
+            <!-- High to Low Option -->
+            <label class="custom-radio-row">
+              <input 
+                type="radio" 
+                name="priceSort" 
+                value="price:desc" 
+                [(ngModel)]="priceSortSelection" 
+                (change)="onPriceSortChange()" 
+                class="hidden-radio-input" />
+              <div class="styled-radio-circle">
+                <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="w3.org">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="radio-text-label">high to low</span>
+            </label>
+
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </div>
+
+
+  <!-- Collapsible Brands Accordion -->
+  <div class="filter-group">
+    <p-accordion [value]="['0']">
+      <p-accordion-panel value="0">
+        <p-accordion-header>Brands</p-accordion-header>
+        <p-accordion-content>
+          <div class="flex-chip-container">
+            @for (b of brands(); track b._id) {
+<button 
+                type="button"
+                [class.selected-chip]="selectedBrandIds.includes(b._id)"
+                (click)="toggleFilterId('brand', b._id)"
+                class="clickable-chip-button">
+                <div class="flex items-center gap-2">
+                  <img [src]="b.logo" alt="{{ b.name }} " class="w-5 h-5 object-contain"/>
+                  {{ b.name }}
+
+                </div>
+              </button>
+            } @empty {
+              <span class="chip-label opacity-50">No brands found</span>
+            }
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </div>
+
+
+
+
+  <!-- Sort Dropdown Selection -->
+  <!-- <div class="filter-group">
+    <label>Sort</label>
+    <select class="w-full p-2 rounded" [(ngModel)]="sortBy" (change)="emitFilters()">
+      <option [value]="null">Relevance</option>
+      <option value="-createdAt">Newest</option>
+      <option value="price:asc">Price: Low to High</option>
+      <option value="price:desc">Price: High to Low</option>
+      <option value="-soldCount">Best Sellers</option>
+    </select>
+  </div> -->
+
+  <!-- Collapsible Product Rating Accordion -->
+  <div class="filter-group">
+    <p-accordion [value]="['0']">
+      <p-accordion-panel value="0">
+        <p-accordion-header>Product Rating</p-accordion-header>
+        <p-accordion-content>
+          <div class="rating-buttons-container">
+            @for (rate of [1, 2, 3, 4, 5]; track rate) {
+              <button 
+                type="button" 
+                [class.selected-rating]="minRating === rate"
+                (click)="toggleRating(rate)"
+                class="rating-square-button">
+                {{ rate }}
+              </button>
+            }
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </div>
+
+
+
+
+
+
+  <!-- Offers Checkboxes -->
+  <div class="filter-group">
+    <label class="text-[var(--color-text-secondary)]">Offers</label>
+    <div class="flex flex-col gap-2">
+      <label><input type="checkbox" [(ngModel)]="allOffers" (change)="emitFilters()"/> All offers</label>
+      <label><input type="checkbox" [(ngModel)]="todayOffers" (change)="emitFilters()"/> Today's offers</label>
+    </div>
+  </div>
+
+
+
+
+</aside>

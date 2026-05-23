@@ -1,0 +1,35 @@
+@if (loading()) {
+  <div class="flex min-h-[50vh] items-center justify-center">
+    <app-loading-spinner />
+  </div>
+} @else if (product(); as currentProduct) {
+  <div class="product-details-page mx-auto flex w-full max-w-[1400px] flex-col gap-16 px-4 py-8  md:py-12">
+    <app-product-details-hero
+      [product]="currentProduct"
+      (addToCart)="onAddToCart()"
+      (checkout)="onCheckout()"
+    />
+
+    @if (faqItems().length) {
+      <app-product-faq [items]="faqItems()" />
+    }
+
+    @if (reviewsData(); as reviews) {
+      <app-product-reviews
+        [data]="reviews"
+        [ratingsAverage]="currentProduct.ratingsAverage"
+        [ratingsQuantity]="currentProduct.ratingsQuantity"
+      />
+    }
+
+    <app-product-related-carousels
+      [brandName]="currentProduct.brand.name"
+      [brandProducts]="brandProducts()"
+      [browsedProducts]="browsedProducts()"
+    />
+  </div>
+} @else {
+  <div class="flex min-h-[40vh] items-center justify-center text-csecondary">
+    Product not found.
+  </div>
+}

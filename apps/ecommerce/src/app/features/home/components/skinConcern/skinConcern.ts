@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
-  selector: 'app-brands',
+  selector: 'app-skin-concern',
   imports: [CarouselModule, CommonModule],
-  templateUrl: './brands.html',
-  styleUrl: './brands.scss',
+  templateUrl: './skinConcern.html',
+  styleUrl: './skinConern.scss',
 })
-export class Brands {
+export class SkinConcern {
 brands = [
   {
     name: 'Google',

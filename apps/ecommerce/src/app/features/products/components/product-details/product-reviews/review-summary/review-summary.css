@@ -1,0 +1,23 @@
+::ng-deep {
+  .review-rating .p-rating-icon {
+    color: #f5b301;
+  }
+
+  .review-progress {
+    height: 0.5rem !important;
+    border-radius: 9999px !important;
+    background: var(--color-bg-primary) !important;
+  }
+
+  .review-progress .p-progressbar-value {
+    background: var(--color-button-primary) !important;
+  }
+
+  .review-write-btn {
+    border-radius: 9999px !important;
+    background: var(--color-button-primary) !important;
+    border-color: var(--color-button-primary) !important;
+    color: var(--color-text-on-color) !important;
+    padding: 0.9rem 1.5rem !important;
+  }
+}

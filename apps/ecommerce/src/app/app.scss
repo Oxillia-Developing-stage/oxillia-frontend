@@ -1,0 +1,9 @@
+.app-loading-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 2000;
+	display: grid;
+	place-items: center;
+	background: rgba(255, 255, 255, 0.6);
+	backdrop-filter: blur(4px);
+}

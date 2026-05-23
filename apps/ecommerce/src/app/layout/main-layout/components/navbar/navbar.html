@@ -17,7 +17,10 @@
     <ox-icon name="ox-shopping-basket" class="flex justify-center items-center" [size]="24"></ox-icon>
     <div class="ml-4 flex items-center space-x-2">
             <ox-icon name="ox-user" [size]="24" class="flex justify-center items-center"></ox-icon>
-    <a  href="#"><span class="hidden  md:inline">Register/</span>Sign In</a>
+    <a  [routerLink]="accountRoute()">
+        <span *ngIf="!isAuthenticated()"><span class="hidden  md:inline" >Register/</span>Sign In</span>
+        <span *ngIf="isAuthenticated()">{{ accountLabel() }}</span>
+    </a>
     </div>
 </div>
 </nav>
@@ -57,6 +60,11 @@
         </div>
     </div>
 </nav>
+
+
+
+
+
 
 <!-- mobile -->
 <div class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300" [class.opacity-100]="isMobileMenuOpen()" [class.opacity-0]="!isMobileMenuOpen()" [class.pointer-events-none]="!isMobileMenuOpen()" (click)="toggleMobileMenu()">

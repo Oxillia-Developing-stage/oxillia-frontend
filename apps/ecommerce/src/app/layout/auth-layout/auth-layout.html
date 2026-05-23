@@ -1,1 +1,11 @@
-<p>auth-layout works!</p>
+<div class="flex w-full items-center justify-center"  [class.flex-row-reverse]="isReversed$ | async">
+    <div class="w-1/2 h-full flex items-center justify-center">
+        <router-outlet></router-outlet>
+    </div>
+    @if (isImgExist) {
+        <div class="w-1/2 h-full">
+           <app-auth-right-img></app-auth-right-img>
+        </div>
+    }
+
+</div>

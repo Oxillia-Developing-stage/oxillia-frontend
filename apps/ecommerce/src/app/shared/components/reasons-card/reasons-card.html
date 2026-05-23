@@ -1,0 +1,19 @@
+<article
+  class="reasons-card"
+  [class.reasons-card--tall]="size() === 'tall'"
+  [class.reasons-card--wide]="size() === 'wide'"
+  [class.reasons-card--warm]="tone() === 'warm'"
+  [class.reasons-card--gold]="tone() === 'gold'"
+  [class.reasons-card--dark]="tone() === 'dark'"
+  [class.reasons-card--sale]="tone() === 'sale'"
+  [class.reasons-card--cool]="tone() === 'cool'"
+>
+  <div class="reasons-card__copy">
+    <h3 class="reasons-card__title">{{ title() }}</h3>
+    <p class="reasons-card__subtitle">{{ subtitle() }}</p>
+  </div>
+
+  <div class="reasons-card__media">
+    <img [src]="image()" [alt]="alt() || title()" loading="lazy"  class="object-cover"/>
+  </div>
+</article>

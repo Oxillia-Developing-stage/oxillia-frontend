@@ -1,0 +1,37 @@
+
+		<div class="w-full mt-12 overflow-x-hidden">
+			<swiper-container
+				#browsedSwiper
+				class="bestceller browsed-swiper"
+				pagination="true"
+				pagination-clickable="true"
+				slides-per-view="1.5"
+				space-between="15"
+				centered-slides="false"
+				initial-slide="0"
+				watch-slides-progress="true"
+				grab-cursor="true"
+				breakpoints='{
+					"640": {
+						"slidesPerView": 2.5,
+						"spaceBetween": 20
+					},
+					"1024": {
+						"slidesPerView": 4,
+						"spaceBetween": 20
+					}
+				}'
+			>
+				@for (product of products; track product._id) {
+					<swiper-slide>
+						<app-products-card
+							[name]="product.name"
+							[url]="product.images?.[0]"
+							[oldprice]="product.price"
+							[newprice]="product.priceAfterDiscount ?? product.price"
+							[productid]="product._id"
+							></app-products-card>
+					</swiper-slide>
+				}
+			</swiper-container>
+		</div>

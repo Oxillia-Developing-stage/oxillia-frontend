@@ -4,6 +4,7 @@ import { ThemeService } from '../../../../core/services/theme.service';
 import { IconComponent } from '../../../../shared/icon/components/icon.component';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive, IconComponent, CommonModule],
@@ -14,6 +15,13 @@ export class Navbar {
   _themeService = inject(ThemeService);
   isMobileMenuOpen = signal(false);
   openCategoryIndex: number | null = null;
+  _cookieService = inject(CookieService);
+
+  isAuthenticated = signal(false);
+  accountLabel = signal('Register/Sign In');
+  accountRoute = signal('/auth/login');
+
+
 
   menuItems = [
     { label: 'Home', route: 'main/home' },
@@ -117,7 +125,22 @@ export class Navbar {
     this.router.events.subscribe(() => {
       this.isMobileMenuOpen.set(false);
       this.openCategoryIndex = null;
+      this.refreshAccountState();
     });
+    this.refreshAccountState()
+  }
+    ngOnInit(): void {
+    this.refreshAccountState();
+  }
+
+  private refreshAccountState(): void {
+    const token = this._cookieService.get('accessToken');
+    const name = this._cookieService.get('name');
+
+    const loggedIn = !!token;
+    this.isAuthenticated.set(loggedIn);
+    this.accountLabel.set(loggedIn ? (name || 'Profile') : 'Register/Sign In');
+    this.accountRoute.set(loggedIn ? '/main/profile' : '/auth/login');
   }
   toggleTheme() {
     this._themeService.toggleTheme();

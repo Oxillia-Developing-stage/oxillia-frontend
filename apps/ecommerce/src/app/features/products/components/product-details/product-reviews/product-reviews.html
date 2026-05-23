@@ -1,0 +1,8 @@
+<section class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+  <app-review-summary
+    [average]="ratingsAverage()"
+    [total]="ratingsQuantity()"
+    [distribution]="data().distribution"
+  />
+  <app-review-list [reviews]="data().reviews" />
+</section>

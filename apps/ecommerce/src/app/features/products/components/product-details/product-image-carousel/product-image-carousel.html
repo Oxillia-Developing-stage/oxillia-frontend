@@ -1,0 +1,56 @@
+<div class="product-image-carousel flex h-full flex-col">
+  <div
+    class="relative flex flex-1 items-center justify-center overflow-hidden rounded-[2.5rem] bg-[var(--color-bg-card)] p-6"
+  >
+    @if (images().length) {
+      <img
+        [src]="images()[activeIndex()]"
+        [alt]="'Product image ' + (activeIndex() + 1)"
+        class="max-h-[420px] w-full object-contain"
+      />
+    } @else {
+      <div class="text-csecondary text-cbase">No image available</div>
+    }
+  </div>
+
+  @if (images().length > 1) {
+    <div class="mt-6 flex items-center justify-center gap-6">
+      <button
+        type="button"
+        (click)="prev()"
+        class="flex h-10 w-10 items-center justify-center rounded-full text-[var(--color-button-primary)] transition hover:bg-[var(--color-button-primary-hover)]"
+        aria-label="Previous image"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
+
+      <div class="flex items-center gap-2">
+        @for (image of images(); track image; let i = $index) {
+          <button
+            type="button"
+            (click)="setActiveIndex(i)"
+            class="h-2.5 rounded-full transition-all"
+            [class.w-8]="activeIndex() === i"
+            [class.w-2.5]="activeIndex() !== i"
+            [class.bg-[var(--color-button-primary)]]="activeIndex() === i"
+            [class.bg-[var(--color-button-secondary)]]="activeIndex() !== i"
+            [attr.aria-label]="'Go to image ' + (i + 1)"
+          ></button>
+        }
+      </div>
+
+      <button
+        type="button"
+        (click)="next()"
+        class="flex h-10 w-10 items-center justify-center rounded-full text-[var(--color-button-primary)] transition hover:bg-[var(--color-button-primary-hover)]"
+        aria-label="Next image"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </button>
+    </div>
+  }
+</div>

@@ -1,0 +1,62 @@
+<div class="account-page">
+  <div class="account-header">
+    <a (click)="goBack()" class="back-link">
+      <span class="back-text">Back</span>
+    </a>
+    <h1 class="page-title">Account</h1>
+  </div>
+
+  <app-avatar-upload 
+    *ngIf="profileData()"
+    [avatarUrl]="profileData()?.avatarUrl" 
+    (fileSelected)="onAvatarSelected($event)">
+  </app-avatar-upload>
+
+  <form *ngIf="profileForm" [formGroup]="profileForm" (ngSubmit)="onSaveProfile()" class="account-form">
+    
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" formControlName="fullName" class="form-input" placeholder="Name">
+    </div>
+
+    <div class="addresses-section">
+      <div class="address-cards-grid">
+        <div class="address-card" *ngFor="let addr of profileData()?.addresses">
+          <div class="address-details">
+            <p class="address-name">{{ profileForm.get('fullName')?.value || profileData()?.fullName }}</p>
+            <p class="address-text">{{ addr.address }}</p>
+            <p class="address-text">{{ addr.city }}</p>
+            <p class="address-text">Phone number: {{ profileForm.get('phoneNumber')?.value || profileData()?.phoneNumber }}</p>
+          </div>
+          <div class="address-actions">
+            <button class="btn btn-outline p-1" (click)="onEditAddress(addr)">Edit</button>
+            <button class="btn btn-danger p-1" (click)="onDeleteAddress(addr)">Delete</button>
+          </div>
+        </div>
+
+        <div class="address-card add-new-card" (click)="openAddressModal()">
+          <div class="plus-icon-circle">
+            <lucide-icon [img]="PlusIcon" size="24"></lucide-icon>
+          </div>
+          <span class="add-new-text">Add new address</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone number</label>
+      <input type="text" formControlName="phoneNumber" class="form-input" placeholder="Your Number">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-cta-primary save-btn" [disabled]="profileForm.invalid">Save</button>
+    </div>
+  </form>
+
+  <app-address-modal 
+    [isOpen]="isAddressModalOpen"
+    [initial]="editingAddress()"
+    (close)="closeAddressModal()" 
+    (save)="onSaveAddress($event)">
+  </app-address-modal>
+</div>

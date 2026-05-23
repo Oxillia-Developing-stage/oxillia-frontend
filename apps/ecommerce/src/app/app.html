@@ -1,2 +1,8 @@
+<app-toaster></app-toaster>
+@if (loadingService.isLoading()) {
+	<div class="app-loading-overlay" aria-live="polite" aria-busy="true">
+		<app-loading-spinner></app-loading-spinner>
+	</div>
+}
 <app-main-layout></app-main-layout>
 

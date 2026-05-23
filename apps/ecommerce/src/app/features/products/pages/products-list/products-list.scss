@@ -1,0 +1,300 @@
+.products-page {
+  display: flex;
+  gap: 32px;
+  padding: 32px;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+.filters-column {
+  width: 280px;
+  background: transparent;
+  flex-shrink: 0;
+
+  .filter-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    text-transform: capitalize;
+  }
+
+  .filter-group {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(93, 90, 136, 0.1);
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      margin-bottom: 12px;
+    }
+
+    input,
+    select,
+    .p-dropdown {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid rgba(93, 90, 136, 0.2);
+      border-radius: 6px;
+      background: var(--color-bg-card);
+      color: var(--color-text-primary);
+      font-size: 13px;
+
+      &:focus {
+        border-color: var(--accent);
+        outline: none;
+      }
+    }
+  }
+
+  .price-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    input {
+      flex: 1;
+    }
+
+    span {
+      color: var(--text-secondary);
+      margin: 0 4px;
+    }
+  }
+
+  .chip {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 6px 12px;
+    background: rgba(123, 101, 251, 0.08);
+    color: var(--color-button-primary);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+.products-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.empty {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+}
+
+.paginator-wrap {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+
+  ::ng-deep .p-paginator {
+  background: var(--color-bg-card);
+  border: 1px solid rgba(93, 90, 136, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+
+    .p-paginator-pages .p-paginator-page {
+      &.p-highlight {
+        background: var(--color-button-primary);
+        color: white;
+        border-color: var(--color-button-primary);
+      }
+
+      &:hover:not(.p-highlight) {
+        background: rgba(123, 101, 251, 0.1);
+      }
+    }
+  }
+}
+.paginator-wrap {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  ::ng-deep .p-paginator {
+    background: transparent !important; /* Removes outer card tracking container boxes */
+    border: none !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    /* Completely hide the edge-jump (First / Last) arrows to match mockup design specifications */
+    .p-paginator-first,
+    .p-paginator-last {
+      display: none !important;
+    }
+
+    /* Style rule properties for all clickable navigation blocks */
+    .p-paginator-page,
+    .p-paginator-prev,
+    .p-paginator-next {
+      background-color: #ffffff !important;
+      color: #1e293b !important;
+      border: 1px solid transparent !important;
+      border-radius: 12px !important; /* Uniform square rounded corners layout */
+      min-width: 44px !important;
+      height: 44px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      margin: 0 !important;
+      padding: 0 12px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease-in-out !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+
+      &:hover:not(.p-highlight) {
+        background-color: #f8fafc !important;
+      }
+    }
+
+    /* Enforce layout dimensions on structural text blocks like Back and Next */
+    .p-paginator-prev,
+    .p-paginator-next {
+      min-width: 80px !important;
+    }
+
+    /* Style rule mapping configurations applied to the active highlighted page selection button */
+    .p-paginator-pages .p-paginator-page.p-highlight {
+      background-color: var(--color-button-primary, #6366f1) !important; /* Custom purple color assignment */
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+
+    /* Format the typography style settings for ellipses (...) spacing item labels */
+    .p-paginator-pages .p-paginator-ellipsis {
+      background-color: #ffffff !important;
+      border-radius: 12px !important;
+      min-width: 44px !important;
+      height: 44px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #000000 !important;
+      font-weight: 600 !important;
+      margin: 0 !important;
+    }
+  }
+
+  /* Custom text label placement colors within action link structures */
+  .paginator-text-action {
+    color: #4f46e5; /* Distinct dark navy lavender text coloration matching Next option */
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  /* Make sure the text on the "Back" action uses a softer gray color when on the first page */
+  ::ng-deep .p-paginator-prev.p-disabled .paginator-text-action {
+    color: #94a3b8 !important; /* Faded steel layout color matching inactive parameters */
+  }
+}
+
+// Tablet (3-column layout)
+@media (max-width: 1024px) {
+  .products-page {
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .filters-column {
+    width: 240px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+// Mobile landscape (2-column layout)
+@media (max-width: 768px) {
+  .products-page {
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .filters-column {
+    width: 100%;
+    order: 2;
+    border-bottom: 1px solid rgba(93, 90, 136, 0.1);
+    padding-bottom: 24px;
+
+    .filter-group {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(93, 90, 136, 0.08);
+    }
+  }
+
+  .products-column {
+    order: 1;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+// Mobile (1-column layout)
+@media (max-width: 480px) {
+  .products-page {
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .filters-column {
+    order: 2;
+    padding-bottom: 16px;
+
+    .filter-header {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .filter-group {
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+    }
+  }
+
+  .products-column {
+    order: 1;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 6px;
+  }
+}

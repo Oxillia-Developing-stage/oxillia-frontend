@@ -70,7 +70,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-heading-xl;
   line-height: $heading-h1-line-height;
   letter-spacing: $heading-h1-letter-spacing;
-  font-weight: if($weight == bold, $heading-h1-weight-bold, $heading-h1-weight-regular);
+  // font-weight: if($weight == bold, $heading-h1-weight-bold, $heading-h1-weight-regular);
   
   // Mobile (default)
   font-size: $heading-h1-size-mobile;
@@ -90,7 +90,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-heading-xl;
   line-height: $heading-h2-line-height;
   letter-spacing: $heading-h2-letter-spacing;
-  font-weight: if($weight == bold, $heading-h2-weight-bold, $heading-h2-weight-regular);
+  // font-weight: if($weight == bold, $heading-h2-weight-bold, $heading-h2-weight-regular);
   
   // Mobile (default)
   font-size: $heading-h2-size-mobile;
@@ -110,7 +110,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-heading-lg;
   line-height: $heading-h3-line-height;
   letter-spacing: $heading-h3-letter-spacing;
-  font-weight: if($weight == bold, $heading-h3-weight-bold, $heading-h3-weight-regular);
+  // font-weight: if($weight == bold, $heading-h3-weight-bold, $heading-h3-weight-regular);
   
   // Mobile (default)
   font-size: $heading-h3-size-mobile;
@@ -130,7 +130,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-heading-lg;
   line-height: $heading-h4-line-height;
   letter-spacing: $heading-h4-letter-spacing;
-  font-weight: if($weight == bold, $heading-h4-weight-bold, $heading-h4-weight-regular);
+  // font-weight: if($weight == bold, $heading-h4-weight-bold, $heading-h4-weight-regular);
   
   // Mobile (default)
   font-size: $heading-h4-size-mobile;
@@ -150,7 +150,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-heading-lg;
   line-height: $heading-h5-line-height;
   letter-spacing: $heading-h5-letter-spacing;
-  font-weight: if($weight == bold, $heading-h5-weight-bold, $heading-h5-weight-regular);
+  // font-weight: if($weight == bold, $heading-h5-weight-bold, $heading-h5-weight-regular);
   
   // Mobile (default)
   font-size: $heading-h5-size-mobile;
@@ -170,7 +170,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-heading-lg;
   line-height: $heading-h6-line-height;
   letter-spacing: $heading-h6-letter-spacing;
-  font-weight: if($weight == bold, $heading-h6-weight-bold, $heading-h6-weight-regular);
+  // font-weight: if($weight == bold, $heading-h6-weight-bold, $heading-h6-weight-regular);
   
   // Mobile (default)
   font-size: $heading-h6-size-mobile;
@@ -191,7 +191,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-body-lg;
   line-height: $text-xl-line-height;
   letter-spacing: $text-xl-letter-spacing;
-  font-weight: if($weight == bold, $text-xl-weight-bold, $text-xl-weight-regular);
+  // font-weight: if($weight == bold, $text-xl-weight-bold, $text-xl-weight-regular);
   
   // Mobile (default)
   font-size: $text-xl-size-mobile;
@@ -211,7 +211,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-body-lg;
   line-height: $text-lg-line-height;
   letter-spacing: $text-lg-letter-spacing;
-  font-weight: if($weight == bold, $text-lg-weight-bold, $text-lg-weight-regular);
+  // font-weight: if($weight == bold, $text-lg-weight-bold, $text-lg-weight-regular);
   
   // Mobile (default)
   font-size: $text-lg-size-mobile;
@@ -231,7 +231,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-body;
   line-height: $text-base-line-height;
   letter-spacing: $text-base-letter-spacing;
-  font-weight: if($weight == bold, $text-base-weight-bold, $text-base-weight-regular);
+  // font-weight: if($weight == bold, $text-base-weight-bold, $text-base-weight-regular);
   
   // Mobile (default)
   font-size: $text-base-size-mobile;
@@ -251,7 +251,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-body;
   line-height: $text-sm-line-height;
   letter-spacing: $text-sm-letter-spacing;
-  font-weight: if($weight == bold, $text-sm-weight-bold, $text-sm-weight-regular);
+  // font-weight: if($weight == bold, $text-sm-weight-bold, $text-sm-weight-regular);
   
   // Mobile (default)
   font-size: $text-sm-size-mobile;
@@ -271,7 +271,7 @@ $text-xs-size-mobile: 0.75rem;       // 12px
   font-family: $font-family-body;
   line-height: $text-xs-line-height;
   letter-spacing: $text-xs-letter-spacing;
-  font-weight: if($weight == bold, $text-xs-weight-bold, $text-xs-weight-regular);
+  // font-weight: if($weight == bold, $text-xs-weight-bold, $text-xs-weight-regular);
   
   // Mobile (default)
   font-size: $text-xs-size-mobile;

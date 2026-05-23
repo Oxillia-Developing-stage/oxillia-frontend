@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.product-details-page {
+  background-color: var(--color-bg-primary);
+}
