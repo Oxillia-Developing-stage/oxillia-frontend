@@ -18,6 +18,9 @@ ENV NX_DAEMON=false
 # Build the ecommerce app
 RUN npx nx build ecommerce --configuration=production
 
+# Render still starts the legacy main.js entrypoint, so copy a compatibility wrapper into the server output.
+RUN node tools/copy-ecommerce-ssr-entry.mjs
+
 # ---- Runtime Stage ----
 FROM node:20-alpine AS runner
 
