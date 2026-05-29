@@ -1,0 +1,49 @@
+<section class="payment-page mx-auto w-full max-w-[1400px]">
+  <header class="payment-topbar">
+    <a routerLink="/main/cart" class="back-link text-cxs text-csecondary">Back</a>
+    <div>
+      <h1 class="payment-title text-cxl text-cprimary">Payment</h1>
+    </div>
+  </header>
+
+  <div class="shipping-banner text-csm text-cprimary">
+    <span>Shipping to &quot;{{ shippingToText }}&quot;</span>
+    <button type="button" class="change-link text-cxs" (click)="clearAddress()">Change address</button>
+  </div>
+
+  @if (loading) {
+    <div class="payment-loading">Loading checkout details...</div>
+  } @else {
+    <div class="payment-grid">
+      <div class="payment-stack">
+        <app-payment-address
+          [phoneNumber]="'20 123 456 7890'"
+          (addressChange)="handleAddressChange($event)"
+          (shippingResolved)="shippingCost?.set($event)">
+          </app-payment-address>
+
+        <app-payment-method
+          [method]="selectedPaymentMethod"
+          [sameAsShipping]="sameAsShipping"
+          (selectionChange)="handlePaymentMethodChange($event)"
+        ></app-payment-method>
+      </div>
+
+      <app-order-review
+        [items]="cartItems"
+        [subtotal]="subtotal"
+        [shippingPrice]="shippingPrice"
+        [total]="total"
+        [buttonLabel]="checkoutLabel"
+        [paymentMethod]="selectedPaymentMethod"
+        (submit)="submitCheckout()"
+      ></app-order-review>
+    </div>
+  }
+</section><section class="feature-shell">
+  <p class="feature-kicker">Checkout</p>
+  <h1 class="feature-title">Payment</h1>
+  <p class="feature-copy">
+    Payment session creation and payment status polling can live here.
+  </p>
+</section>

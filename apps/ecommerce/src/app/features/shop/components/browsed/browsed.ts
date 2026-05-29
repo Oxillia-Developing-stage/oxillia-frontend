@@ -2,13 +2,14 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Input, PLATFORM_ID, ViewChild, inject } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { ProductItem } from 'apps/ecommerce/src/app/shared/interfacers/products';
+import { ProductsCard } from 'apps/ecommerce/src/app/shared/components/products-card/products-card';
 
 register();
 
 @Component({
   selector: 'app-browsed',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductsCard],
   templateUrl: './browsed.html',
   styleUrl: './browsed.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

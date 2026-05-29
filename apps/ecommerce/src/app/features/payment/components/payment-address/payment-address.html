@@ -1,0 +1,52 @@
+<section class="payment-card address-card">
+  <header class="card-topline">
+    <div>
+      <span class="meta-label text-cxs text-csecondary">Phone Number</span>
+      <p class="meta-value text-csm text-cprimary">{{ phoneNumber }}</p>
+    </div>
+
+    <button type="button" class="change-link text-cxs" (click)="resetAddress()">Change Address</button>
+  </header>
+
+  <div class="field-group">
+    <div class="field-block">
+      <label class="field-label text-cxs text-csecondary">City</label>
+      <p-select
+        [(ngModel)]="selectedGovernorateId"
+        [options]="governorates()"
+        optionLabel="name"
+        optionValue="_id"
+        placeholder="Your City"
+        styleClass="payment-dropdown"
+        appendTo="body"
+        (onChange)="onGovernorateChange()"
+      ></p-select>
+    </div>
+
+    <div class="field-block">
+      <label class="field-label text-cxs text-csecondary">District</label>
+      <p-select
+        [(ngModel)]="selectedDistrictId"
+        [options]="districts()"
+        optionLabel="name"
+        optionValue="_id"
+        placeholder="Your District"
+        styleClass="payment-dropdown"
+        appendTo="body"
+        [disabled]="!selectedGovernorateId"
+        (onChange)="onDistrictChange()"
+      ></p-select>
+    </div>
+
+    <div class="field-block field-block--full">
+      <label class="field-label text-cxs text-csecondary">Address</label>
+      <textarea
+        [(ngModel)]="addressLine"
+        class="address-textarea text-csm"
+        rows="4"
+        placeholder="Your Number"
+        (ngModelChange)="onAddressChange()"
+      ></textarea>
+    </div>
+  </div>
+</section>

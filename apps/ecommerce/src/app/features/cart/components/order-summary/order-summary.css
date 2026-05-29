@@ -1,0 +1,185 @@
+.order-summary-card {
+	display: grid;
+	gap: 1rem;
+	padding: 1.5rem;
+	border-radius: 1.5rem;
+	background: color-mix(in srgb, var(--color-bg-card) 96%, transparent);
+	color: var(--color-text-primary);
+	border: 1px solid color-mix(in srgb, var(--color-border-default) 12%, transparent);
+	box-shadow: 0 10px 30px rgba(18, 18, 38, 0.04);
+}
+
+:host {
+	display: block;
+	position: sticky;
+	top: 1.25rem;
+}
+
+.summary-header,
+.summary-row,
+.summary-total,
+.coupon-box {
+	display: flex;
+	align-items: center;
+}
+
+.summary-header {
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.summary-header h3 {
+	margin: 0;
+	letter-spacing: -0.04em;
+}
+
+.summary-header p {
+	margin: 0;
+	color: var(--color-text-secondary);
+}
+
+.summary-lines {
+	display: grid;
+	gap: 0.875rem;
+}
+
+.summary-row {
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.summary-row span {
+	color: var(--color-text-secondary);
+}
+
+.summary-row strong {
+	font-weight: 600;
+}
+
+.summary-row .success {
+	color: var(--color-success);
+}
+
+.coupon-box {
+	gap: 0.75rem;
+	padding: 0.4rem 0.45rem 0.4rem 1rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--color-bg-primary) 68%, var(--color-bg-card));
+	border: 1px solid color-mix(in srgb, var(--color-border-default) 10%, transparent);
+}
+
+.coupon-box input {
+	flex: 1;
+	min-width: 0;
+	border: 0;
+	outline: none;
+	background: transparent;
+	color: var(--color-text-primary);
+	font: inherit;
+}
+
+.coupon-box input::placeholder {
+	color: var(--color-text-placeholder);
+}
+
+.coupon-button {
+	border: 0;
+	border-radius: 999px;
+	padding: 0.7rem 1.1rem;
+	background: transparent;
+	color: var(--color-text-primary);
+	font-weight: 600;
+	cursor: pointer;
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.coupon-button:hover:not(:disabled) {
+	background: color-mix(in srgb, var(--color-button-primary) 12%, transparent);
+}
+
+.coupon-button:disabled {
+	cursor: wait;
+	opacity: 0.65;
+}
+
+.coupon-message {
+	margin: -0.35rem 0 0;
+	color: var(--color-success);
+}
+
+.summary-total {
+	justify-content: space-between;
+	gap: 1rem;
+	padding-top: 0.9rem;
+	border-top: 1px solid color-mix(in srgb, var(--color-border-default) 18%, transparent);
+}
+
+.summary-total span {
+	display: block;
+	color: var(--color-text-primary);
+	margin-bottom: 0.15rem;
+}
+
+.summary-total strong {
+	font-weight: 700;
+}
+
+.summary-total small {
+	color: color-mix(in srgb, var(--color-text-secondary) 65%, transparent);
+	text-decoration: line-through;
+}
+
+.checkout-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 3rem;
+	border-radius: 999px;
+	background: var(--color-button-primary);
+	color: var(--color-text-on-color);
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-weight: 700;
+	box-shadow: 0 14px 24px color-mix(in srgb, var(--color-button-primary) 26%, transparent);
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.checkout-button:hover {
+	transform: translateY(-1px);
+	background: var(--color-button-primary-hover);
+}
+
+.summary-reasons {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 0.7rem;
+}
+
+.summary-reasons li {
+	position: relative;
+	padding-left: 1.7rem;
+	color: var(--color-text-secondary);
+}
+
+.summary-reasons li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.18rem;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--color-button-primary) 18%, transparent);
+	border: 1px solid color-mix(in srgb, var(--color-button-primary) 42%, transparent);
+	box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--color-bg-card) 82%, transparent);
+}
+
+@media (max-width: 1024px) {
+	:host {
+		position: static;
+	}
+}

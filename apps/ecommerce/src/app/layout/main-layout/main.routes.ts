@@ -3,6 +3,9 @@ import {HomeRoutes} from "../../features/home/home.routes";
 import { profileRoutes } from "../../features/profile/profile.routes";
 import { ShopRoutes } from "../../features/shop/shop.routes";
 import { ProductRoutes } from "../../features/products/product.routes";
+import { CartRoutes } from "../../features/cart/cart.routes";
+import { OrderRoutes } from "../../features/order/order.routes";
+import { PaymentRoutes } from "../../features/payment/payment.routes";
 
 export const mainRoutes: Routes = [
     {
@@ -12,7 +15,10 @@ export const mainRoutes: Routes = [
             ...HomeRoutes,
             ...profileRoutes,
             ...ShopRoutes,
-            ...ProductRoutes
+            ...ProductRoutes,
+            ...CartRoutes,
+            ...OrderRoutes,
+            ...PaymentRoutes
         ]
     }
 ]

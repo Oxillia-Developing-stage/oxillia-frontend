@@ -1,0 +1,53 @@
+<section class="cart-page mx-auto w-full max-w-[1400px]">
+  <header class="cart-hero">
+    <div>
+      <p class="feature-kicker text-cxs text-csecondary">Checkout</p>
+      <h1 class="feature-title text-cxl text-cprimary">Shopping Cart</h1>
+      <p class="feature-copy text-csm text-csecondary">Review your items, update quantities, and continue to checkout.</p>
+    </div>
+
+    <a class="continue-link text-csm" routerLink="/main/shop">Continue shopping</a>
+  </header>
+
+  @if (loading()) {
+    <div class="loading-card">Loading your cart...</div>
+  } @else if (items().length === 0) {
+    <div class="empty-card">
+      <h2>Your cart is empty</h2>
+      <p>Add products from the shop to start checkout.</p>
+      <a routerLink="/main/shop" class="continue-link">Browse products</a>
+    </div>
+  } @else {
+    <div class="cart-grid">
+      <div class="cart-items">
+        @for (item of items(); track item._id ?? $index) {
+          <app-cart-item [item]="item" (changed)="loadCart()"></app-cart-item>
+        }
+      </div>
+
+      <app-order-summary
+        [subtotal]="subtotal()"
+        [itemCount]="items().length"
+        (changed)="loadCart()"
+      ></app-order-summary>
+    </div>
+  }
+
+  @if (recommendedProducts().length > 0) {
+    <section class="discover-section">
+      <h2 class="discover-title text-clg text-cprimary">Products recently viewed</h2>
+      <ng-container
+        *ngComponentOutlet="recommendationsComponent; inputs: { products: recommendedProducts() }"
+      ></ng-container>
+    </section>
+  }
+
+  @if (browsedProducts().length > 0) {
+    <section class="discover-section">
+      <h2 class="discover-title text-clg text-cprimary">Buy again</h2>
+      <ng-container
+        *ngComponentOutlet="browsedComponent; inputs: { products: browsedProducts() }"
+      ></ng-container>
+    </section>
+  }
+</section>

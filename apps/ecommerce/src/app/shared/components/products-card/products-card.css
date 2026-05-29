@@ -1,0 +1,5 @@
+.cart-action {
+	border: 0;
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}

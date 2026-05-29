@@ -1,0 +1,57 @@
+<aside class="order-summary-card">
+	<header class="summary-header">
+		<h3 class="text-clg text-cprimary">Order Summary</h3>
+		<p class="text-cxs text-csecondary">{{ itemCount }} item{{ itemCount === 1 ? '' : 's' }}</p>
+	</header>
+
+	<div class="summary-lines">
+		<div class="summary-row">
+			<span class="text-cxs text-csecondary">Subtotal</span>
+			<strong class="text-cxs text-cprimary">{{ subtotal | currency }}</strong>
+		</div>
+
+		<div class="summary-row">
+			<span class="text-cxs text-csecondary">Shipping</span>
+			<strong class="text-cxs text-csecondary">Calculated at checkout</strong>
+		</div>
+
+		<div class="summary-row">
+			<span class="text-cxs text-csecondary">Estimated Tax</span>
+			<strong class="text-cxs text-cprimary">{{ tax | currency }}</strong>
+		</div>
+	</div>
+
+	<div class="coupon-box">
+		<input
+			#couponInput
+			type="text"
+			[value]="couponCode"
+			(input)="couponCode = couponInput.value"
+			placeholder="Promo code"
+			aria-label="Promo code"
+		/>
+		<button type="button" class="coupon-button" (click)="applyCoupon(couponInput.value)" [disabled]="applyingCoupon">
+			{{ applyingCoupon ? 'Applying...' : 'Apply' }}
+		</button>
+	</div>
+
+	@if (couponMessage) {
+		<p class="coupon-message">{{ couponMessage }}</p>
+	}
+
+	<div class="summary-total">
+		<div>
+			<span class="text-csm text-cprimary">Total</span>
+			<strong class="text-cbase text-cprimary">{{ total | currency }}</strong>
+		</div>
+		<small class="text-cxs">{{ subtotal | currency }}</small>
+	</div>
+
+	<button type="button" class="checkout-button text-cxs" (click)="goToCheckout()">Proceed to checkout</button>
+
+	<ul class="summary-reasons">
+		<li>Secure payment SSL</li>
+		<li>Authenticity guaranteed</li>
+		<li>30-day easy returns</li>
+	</ul>
+</aside>

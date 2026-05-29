@@ -5,6 +5,7 @@ import { IconComponent } from '../../../../shared/icon/components/icon.component
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
+import { CartService } from '../../../../features/cart/cart.service';
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive, IconComponent, CommonModule],
@@ -16,6 +17,8 @@ export class Navbar {
   isMobileMenuOpen = signal(false);
   openCategoryIndex: number | null = null;
   _cookieService = inject(CookieService);
+  private readonly _cartService = inject(CartService);
+  cartCount = signal(0);
 
   isAuthenticated = signal(false);
   accountLabel = signal('Register/Sign In');
@@ -128,6 +131,9 @@ export class Navbar {
       this.refreshAccountState();
     });
     this.refreshAccountState()
+    // subscribe to cart count and keep badge updated
+    this._cartService.cartCount$.subscribe((c) => this.cartCount.set(c));
+    this._cartService.refreshCartCount();
   }
     ngOnInit(): void {
     this.refreshAccountState();

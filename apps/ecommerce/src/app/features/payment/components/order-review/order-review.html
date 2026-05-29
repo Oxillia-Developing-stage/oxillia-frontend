@@ -1,0 +1,55 @@
+<aside class="payment-card review-card">
+  <header class="review-header">
+    <h3 class="text-clg text-cprimary">Order Review</h3>
+  </header>
+
+  <div class="review-items">
+    @for (item of items; track item._id) {
+      <article class="review-item">
+        <img class="review-image" [src]="item.product.images?.[0] || ''" [alt]="item.product.name" />
+        <div class="review-copy">
+          <p class="text-cxs text-cprimary">{{ item.product.name }}</p>
+          <small class="text-cxs text-csecondary">Qty: {{ item.quantity }}</small>
+        </div>
+        <strong class="text-cxs text-cprimary">{{ item.price | currency }}</strong>
+      </article>
+    }
+  </div>
+
+  <div class="summary-lines">
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <strong>{{ subtotal | currency }}</strong>
+    </div>
+
+    <div class="summary-row">
+      <span>Shipping</span>
+      <strong class="shipping-value">{{ shippingLabel }}</strong>
+    </div>
+
+    <div class="summary-row">
+      <span>Estimated Tax</span>
+      <strong>0.00</strong>
+    </div>
+  </div>
+
+  <div class="summary-total">
+    <div>
+      <span>Total</span>
+      <strong>{{ total | currency }}</strong>
+    </div>
+    <small>{{ subtotal | currency }}</small>
+  </div>
+
+  <button type="button" class="checkout-button" (click)="submit.emit()">{{ buttonLabel }}</button>
+
+  <ul class="review-reasons">
+    <li>SSL encryption</li>
+    <li>Trusted payments</li>
+    <li>Original guarantee</li>
+  </ul>
+
+  <p class="review-note text-cxs text-csecondary">
+    Your clinical data and payment details are handled with medical-grade security.
+  </p>
+</aside>

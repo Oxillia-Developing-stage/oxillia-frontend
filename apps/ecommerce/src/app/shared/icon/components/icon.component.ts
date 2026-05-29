@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   OnInit,
   PLATFORM_ID,
-    inject
+  inject,
+  signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -20,8 +21,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       class="ox-icon"
       [style.width.px]="getResponsiveSize(size)"
 
-      [innerHTML]="svg"
-      [class]="class">
+      [innerHTML]="svg()"
+      [class]="'ox-icon ' + (class || '')">
     </span>
   `,
   styles: [`
@@ -44,7 +45,7 @@ export class IconComponent implements OnInit {
   @Input() size = 20;
     @Input() class = '';
     @Input() color = 'currentColor';
- svg: SafeHtml = '';
+ svg = signal<SafeHtml>('');
 
   private platformId = inject(PLATFORM_ID);
 
@@ -71,7 +72,7 @@ getResponsiveSize(baseSize: number): number {
         .replace(/#161616/g, this.color)
         .replace(/#CCCCCC/g, this.color);
 
-      this.svg = this.sanitizer.bypassSecurityTrustHtml(coloredSvg);
+      this.svg.set(this.sanitizer.bypassSecurityTrustHtml(coloredSvg));
     });
   }
 }

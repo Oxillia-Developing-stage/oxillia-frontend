@@ -1,0 +1,134 @@
+.cart-page {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1rem, 2vw, 1.75rem);
+  color: var(--color-text-primary);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.cart-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  border-radius: 1.5rem;
+  background: color-mix(in srgb, var(--color-bg-card) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border-default) 14%, transparent);
+  box-shadow: 0 14px 36px rgba(24, 24, 42, 0.04);
+}
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: 1.25rem;
+  align-items: start;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.cart-items,
+.loading-card,
+.empty-card {
+  padding: clamp(0.9rem, 1.5vw, 1.15rem);
+  border-radius: 1.5rem;
+  background: var(--color-bg-card);
+  border: 1px solid color-mix(in srgb, var(--color-border-default) 14%, transparent);
+  box-shadow: 0 10px 30px rgba(24, 24, 42, 0.04);
+  min-width: 0;
+}
+
+.cart-items {
+  display: grid;
+  gap: 1rem;
+}
+
+.continue-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  background: var(--color-button-primary);
+  color: var(--color-text-on-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.continue-link:hover {
+  transform: translateY(-1px);
+  background: var(--color-button-primary-hover);
+}
+
+.feature-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.feature-title {
+  margin: 0;
+  letter-spacing: -0.04em;
+  color: var(--color-text-primary);
+}
+
+.feature-copy {
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 42rem;
+}
+
+.loading-card,
+.empty-card {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.discover-section {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.discover-title {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+/* Prevent Swiper from forcing page width growth */
+:host ::ng-deep .discover-section swiper-container,
+:host ::ng-deep .discover-section .bestceller {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+.empty-card h2,
+.loading-card {
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .cart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-hero {
+    flex-direction: column;
+  }
+
+  .continue-link {
+    width: 100%;
+  }
+}

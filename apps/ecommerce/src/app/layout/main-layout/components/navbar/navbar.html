@@ -14,7 +14,10 @@
 
 </div>
 <div class="flex md:flex-1 justify-end">
-    <ox-icon name="ox-shopping-basket" class="flex justify-center items-center" [size]="24"></ox-icon>
+    <a class="cart-icon-wrap relative" routerLink="/main/cart" aria-label="Open cart">
+        <ox-icon name="ox-shopping-basket" class="flex justify-center items-center" [size]="24"></ox-icon>
+        <span *ngIf="cartCount() > 0" class="cart-badge">{{ cartCount() }}</span>
+    </a>
     <div class="ml-4 flex items-center space-x-2">
             <ox-icon name="ox-user" [size]="24" class="flex justify-center items-center"></ox-icon>
     <a  [routerLink]="accountRoute()">

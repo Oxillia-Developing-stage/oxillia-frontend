@@ -1,0 +1,29 @@
+<section class="payment-card method-card-stack">
+  @for (option of methods; track option.value) {
+    <label class="payment-method-row">
+      <p-radioButton
+        [(ngModel)]="method"
+        [value]="option.value"
+        name="paymentMethod"
+        [inputId]="option.value"
+        (onClick)="emitChange()"
+      ></p-radioButton>
+
+      <div class="payment-method-copy">
+        <span class="text-cbase text-cprimary">{{ option.label }}</span>
+        <small class="text-cxs text-csecondary">{{ option.description }}</small>
+      </div>
+    </label>
+  }
+
+  <label class="billing-line">
+    <p-checkbox
+      [(ngModel)]="sameAsShipping"
+      [binary]="true"
+      inputId="billingSameAsShipping"
+      (onChange)="emitChange()"
+    ></p-checkbox>
+    <span class="text-cxs text-csecondary">Billing address is the same as shipping address?</span>
+    <button type="button" class="change-link text-cxs">Change Address</button>
+  </label>
+</section>
