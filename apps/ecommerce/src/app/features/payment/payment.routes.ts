@@ -7,4 +7,9 @@ export const PaymentRoutes: Routes = [
     loadComponent: () => import('./payment').then((m) => m.Payment),
     canActivate: [authGuard],
   },
+  {
+    path: 'order-review',
+    loadComponent: () => import('./order-review-page').then((m) => m.OrderReviewPageComponent),
+    canActivate: [authGuard],
+  },
 ];

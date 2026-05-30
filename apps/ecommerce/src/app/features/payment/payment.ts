@@ -112,7 +112,7 @@ export class Payment implements OnInit {
           next: (response) => {
             this.toasterService.showsuccess('Order placed successfully.');
             this.cartService.refreshCartCount();
-            this.router.navigate(['/main/order'], {
+            this.router.navigate(['/main/order-review'], {
               state: {
                 orderId: response.data?._id,
                 addressLine: address.addressLine,

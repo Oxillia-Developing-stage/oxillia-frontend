@@ -1,0 +1,115 @@
+<section class="order-review-page mx-auto w-full max-w-[1200px]">
+  <header class="success-hero">
+    <div class="success-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img" aria-label="Success">
+        <path d="M9.2 16.2 4.9 11.9l-1.8 1.8 6.1 6.1L21 8.9l-1.8-1.8z"></path>
+      </svg>
+    </div>
+
+    <h1>Thank You For Your Order</h1>
+    <p class="order-number">Order {{ orderNumber }}</p>
+    <p class="confirmation-copy">
+      A confirmation email with your invoice and tracking details has been sent to {{ confirmationEmail }}
+    </p>
+  </header>
+
+  <div class="confirmation-card">
+    <section class="shipping-panel">
+      <p class="panel-kicker">Shipping To</p>
+      <h2 class="shipping-name">{{ shippingRecipient }}</h2>
+
+      <div class="shipping-lines">
+        @for (line of shippingLines; track line) {
+          <p>{{ line }}</p>
+        }
+      </div>
+
+      <div class="delivery-panel">
+        <div class="delivery-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 7h11v10H3zM14 10h4l3 3v4h-7zM7 19a2 2 0 1 0 0-.01zM18 19a2 2 0 1 0 0-.01z"></path>
+          </svg>
+        </div>
+
+        <div>
+          <strong>{{ deliveryMethodLabel }}</strong>
+          <p>{{ deliveryMethodNote }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="summary-panel">
+      <p class="panel-kicker panel-kicker--light">Order Summary</p>
+
+      <div class="summary-items">
+        @for (item of displayItems; track item._id) {
+          <article class="summary-item">
+            <img [src]="item.product.images?.[0] || ''" [alt]="item.product.name" />
+            <div class="summary-copy">
+              <h3>{{ item.product.name }}</h3>
+              <p>Qty: {{ item.quantity }}</p>
+            </div>
+            <strong>{{ item.lineTotal | currency }}</strong>
+          </article>
+        }
+      </div>
+
+      <div class="summary-lines">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong>{{ subtotal | currency }}</strong>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <strong class="shipping-value">{{ shippingLabel }}</strong>
+        </div>
+        <div class="summary-row">
+          <span>Estimated Tax</span>
+          <strong>$0.0</strong>
+        </div>
+      </div>
+
+      <div class="summary-total">
+        <div>
+          <span>Total</span>
+          <strong>{{ total | currency }}</strong>
+        </div>
+        <small>{{ subtotal | currency }}</small>
+      </div>
+    </section>
+  </div>
+
+  <section class="status-section">
+    <p class="status-title">Order Status</p>
+
+    <div class="status-timeline" aria-label="Order status">
+      @for (step of statusSteps; track step.key; let index = $index) {
+        <div class="status-step" [class.is-completed]="step.status === 'completed'" [class.is-active]="step.status === 'active'">
+          <div class="status-marker">
+            <svg [attr.viewBox]="'0 0 24 24'" aria-hidden="true">
+              @if (step.icon === 'processing') {
+                <path d="M12 2a10 10 0 1 0 10 10h-2a8 8 0 1 1-8-8V2z"></path>
+              } @else if (step.icon === 'shipping') {
+                <path d="M3 6h12v10H3zM15 9h4l2 3v4h-6zM7 19a2 2 0 1 0 0-.01zM17 19a2 2 0 1 0 0-.01z"></path>
+              } @else {
+                <path d="M4 20h16v-2H4zm2-4h12l-1.5-9h-9zM8 5h8v2H8z"></path>
+              }
+            </svg>
+          </div>
+
+          <div class="status-copy">
+            <div class="status-track">
+              <span class="status-track-fill"></span>
+            </div>
+            <p>{{ step.label }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="action-row">
+      <button type="button" class="action-primary" (click)="trackOrder()">Track your order</button>
+      <button type="button" class="action-secondary" (click)="continueShopping()">Continue shopping</button>
+    </div>
+  </section>
+</section>
