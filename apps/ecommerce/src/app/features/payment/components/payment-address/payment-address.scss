@@ -80,11 +80,6 @@
   color: var(--color-text-secondary);
 }
 
-:host ::ng-deep .payment-dropdown .p-select-overlay {
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
 @media (max-width: 768px) {
   .card-topline {
     flex-direction: column;

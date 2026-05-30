@@ -13,9 +13,8 @@ import { LoadingSpinner } from '../../../../shared/components/ui/loading-spinner
 import { ProductItem, ProductRespone } from '../../../../shared/interfacers/products';
 import { CategoryItem } from '../../../../shared/interfacers/category';
 import { BrandItme } from '../../../../shared/interfacers/brand';
-import { Recommendations } from '../../../shop/components/recommendations/recommendations';
-import { Browsed } from '../../../shop/components/browsed/browsed';
 import { CookieService } from 'ngx-cookie-service';
+import { BrowsingHistoryItem } from '../../../shop/shop.service';
 
 type QueryParamValue = string;
 type FilterValue = string | number | boolean | null | undefined;
@@ -30,8 +29,7 @@ type PageChangeEvent = { page?: number; rows?: number };
       PaginatorModule,
        CheckboxModule, InputNumberModule,
         ProductsCard, ProductsFilter, LoadingSpinner,
-      Recommendations,
-    Browsed],
+    ],
   templateUrl: './products-list.html',
   styleUrls: ['./products-list.scss'],
 })
@@ -103,7 +101,7 @@ export class ProductsList implements OnInit {
     this.shop.getBrands().subscribe((b) => this.applyMetaItems((items) => (this.brands = items), b?.data || []));
     if(this.isAuthenticated()){
     this.shop.getBrowesedHistory().subscribe((res) => {
-      this.applyMetaItems((items) => (this.broswedItems = items), res?.data || []);
+      this.applyMetaItems((items) => (this.broswedItems = items), (res?.data || []).map((item: BrowsingHistoryItem) => item.product));
     });
     this.shop.getRecommendations().subscribe((res) => {
       this.applyMetaItems((items) => (this.reocommdations = items), res?.data || []);

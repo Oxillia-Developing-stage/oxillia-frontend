@@ -1,0 +1,36 @@
+<div class="account-dropdown-shell">
+  @if (isAuthenticated) {
+    <button type="button" class="account-trigger" (click)="openMenu($event, accountMenu)">
+      <span class="account-icon" aria-hidden="true">U</span>
+      <span class="account-text__label">{{ menuLabel }}</span>
+      <span class="account-caret" aria-hidden="true">▾</span>
+    </button>
+
+    <p-menu
+      #accountMenu
+      [popup]="true"
+      [model]="menuItems"
+      [style]="menuStyle"
+      appendTo="body"
+      styleClass="account-dropdown-panel"
+    >
+      <ng-template #item let-item>
+        <a
+          pRipple
+          class="account-menu-item-link"
+          [style.color]="'var(--color-text-primary)'"
+          [style.background]="'transparent'"
+          [class.is-danger]="item.styleClass === 'is-danger'"
+          (click)="item.command?.({ originalEvent: $event, item: item })"
+        >
+          <span class="account-menu-item-label" [style.color]="'inherit'">{{ item.label }}</span>
+        </a>
+      </ng-template>
+    </p-menu>
+  } @else {
+    <a class="account-trigger account-trigger--guest" [routerLink]="accountRoute">
+      <span class="account-icon" aria-hidden="true">U</span>
+      <span class="account-text__label">{{ guestLabel }}</span>
+    </a>
+  }
+</div>

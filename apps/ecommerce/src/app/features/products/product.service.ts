@@ -12,6 +12,7 @@ import {
   ProductReviewsResponse,
 } from '../../shared/interfacers/reviews';
 import { HttpClient } from '@angular/common/http';
+import { BrowsingHistoryResponse } from '../shop/shop.service';
 
 @Injectable({
   providedIn: 'root',
@@ -62,8 +63,8 @@ export class ProductService {
 
   getBrowsingHistory(): Observable<ProductItem[]> {
     return this._httpClient
-      .get<ProductRespone>(`${this._baseUrl}/users/browsing-history`)
-      .pipe(map((res) => res.data ?? []));
+      .get<BrowsingHistoryResponse>(`${this._baseUrl}/users/browsing-history`)
+      .pipe(map((res) => (res.data ?? []).map((item) => item.product)));
   }
 
   /** Placeholder until reviews API is available */

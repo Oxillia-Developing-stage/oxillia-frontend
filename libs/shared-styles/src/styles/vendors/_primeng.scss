@@ -53,3 +53,50 @@
     color: var(--color-text-primary);
   }
 }
+
+.account-dropdown-panel.p-menu.p-menu-overlay,
+.account-dropdown-panel.p-menu-overlay,
+.payment-dropdown-panel.p-select-overlay {
+  border-radius: 1rem !important;
+  border: 1px solid color-mix(in srgb, var(--color-border-default) 14%, transparent) !important;
+  background: var(--color-bg-surface) !important;
+  background-color: var(--color-bg-surface) !important;
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--color-button-primary) 12%, transparent) !important;
+  overflow: hidden !important;
+}
+
+.account-dropdown-panel .p-menu-list,
+.payment-dropdown-panel .p-select-list-container {
+  padding: 0.5rem !important;
+}
+
+.account-dropdown-panel .p-menu-item-content,
+.payment-dropdown-panel .p-select-option {
+  border-radius: 0.85rem !important;
+  padding: 0.85rem 1rem !important;
+  color: var(--color-text-primary) !important;
+}
+
+.account-dropdown-panel .p-menuitem-link,
+.account-dropdown-panel .p-menu-item-link,
+.payment-dropdown-panel .p-select-option {
+  color: var(--color-text-primary) !important;
+  padding: 0.85rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.account-dropdown-panel .p-menu-item-link:hover,
+.account-dropdown-panel .p-menuitem-link:hover,
+.payment-dropdown-panel .p-select-option.p-highlight,
+.payment-dropdown-panel .p-select-option:hover {
+  background: color-mix(in srgb, var(--color-button-primary) 10%, transparent) !important;
+}
+
+.payment-dropdown .p-select-label {
+  color: var(--color-text-primary);
+}
+
+.payment-dropdown .p-select-trigger {
+  color: var(--color-text-secondary);
+}

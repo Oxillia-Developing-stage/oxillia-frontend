@@ -6,9 +6,10 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { CartService } from '../../../../features/cart/cart.service';
+import { NavbarAccountDropdownComponent } from './navbar-account-dropdown/navbar-account-dropdown.component';
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive, IconComponent, CommonModule],
+  imports: [RouterLink, RouterLinkActive, IconComponent, CommonModule, NavbarAccountDropdownComponent],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })

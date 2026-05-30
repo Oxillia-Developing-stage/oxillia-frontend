@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BaseUrl } from '@oxillia/features-auth';
 import { Observable } from 'rxjs';
-import {ProductRespone} from '../../shared/interfacers/products';
+import { ProductItem, ProductRespone } from '../../shared/interfacers/products';
 import { CategoryResponse } from '../../shared/interfacers/category';
 import { BrandRespone } from '../../shared/interfacers/brand';
 import { OfferResponse } from '../../shared/interfacers/offers';
@@ -21,6 +21,20 @@ export interface BannerResponse {
   statusCode: number;
   message: string;
   data: BannerItem[];
+}
+
+export interface BrowsingHistoryItem {
+  _id: string;
+  product: ProductItem;
+  category: string;
+  viewedAt: string;
+}
+
+export interface BrowsingHistoryResponse {
+  success: boolean;
+  statusCode: number;
+  message: string;
+  data: BrowsingHistoryItem[];
 }
 @Injectable({
   providedIn: 'root',
@@ -57,7 +71,7 @@ export class ShopService {
     return this._httpClient.get<ProductRespone>(`${this._baseUrl}/users/recommendations`);
   }
   getBrowesedHistory(){
-    return this._httpClient.get<ProductRespone>(`${this._baseUrl}/users/browsing-history`);
+    return this._httpClient.get<BrowsingHistoryResponse>(`${this._baseUrl}/users/browsing-history`);
   }
   getUpComingOffers(){
     return this._httpClient.get<OfferResponse>(`${this._baseUrl}/offers/upcoming`);

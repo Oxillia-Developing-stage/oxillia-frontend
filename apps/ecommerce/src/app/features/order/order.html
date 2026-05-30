@@ -1,7 +1,222 @@
-<section class="feature-shell">
-  <p class="feature-kicker">Checkout</p>
-  <h1 class="feature-title">Order</h1>
-  <p class="feature-copy">
-    Order creation, order history, and tracking entry points can live here.
-  </p>
+<section class="orders-page mx-auto w-full max-w-[1280px]">
+  <header class="orders-hero card">
+    <div class="hero-copy">
+      <p class="eyebrow text-cxs text-csecondary">Your account</p>
+      <h1 class="orders-title text-cprimary">My Orders</h1>
+      <p class="orders-summary text-csm text-csecondary">
+        Everything you've purchased in one place, with status, payment, tracking, and details for each order.
+      </p>
+    </div>
+
+    <div class="orders-stats">
+      @for (stat of orderStats; track stat.label) {
+        <div class="stat-card" [attr.data-tone]="stat.tone">
+          <span class="stat-label text-cxs text-csecondary">{{ stat.label }}</span>
+          <strong class="stat-value text-cprimary">{{ stat.value }}</strong>
+        </div>
+      }
+    </div>
+  </header>
+
+  <div class="toolbar card">
+    <label class="search-field">
+      <span class="text-cxs text-csecondary">Search orders</span>
+      <input [(ngModel)]="searchText" type="text" placeholder="Order number, status, carrier, tracking number" />
+    </label>
+
+    <div class="toolbar-actions">
+      <button type="button" class="btn btn-cta-secondary toolbar-button" (click)="clearSearch()">Clear</button>
+      <a class="btn btn-cta-primary toolbar-button" routerLink="/main/shop">Continue shopping</a>
+    </div>
+  </div>
+
+  @if (errorMessage) {
+    <div class="message-banner text-csm text-cprimary">{{ errorMessage }}</div>
+  }
+
+  @if (loading) {
+    <div class="loading-card card text-cprimary">Loading your orders...</div>
+  } @else if (orders.length === 0) {
+    <section class="empty-state card">
+      <h2 class="text-cprimary">No orders yet</h2>
+      <p class="text-csm text-csecondary">When you place your first order, it will appear here with tracking and payment status.</p>
+      <a class="btn btn-cta-primary action-btn" routerLink="/main/shop">Start shopping</a>
+    </section>
+  } @else {
+    <section class="orders-layout">
+      <aside class="orders-list card">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker text-cxs text-csecondary">Order history</p>
+            <h2 class="section-title text-cprimary">Recent orders</h2>
+          </div>
+          <span class="list-count text-cxs text-csecondary">{{ filteredOrders.length }} shown</span>
+        </div>
+
+        @if (filteredOrders.length === 0) {
+          <div class="list-empty text-csm text-csecondary">No orders match your search.</div>
+        } @else {
+          <div class="order-list">
+            @for (order of filteredOrders; track order._id) {
+              <button type="button" class="order-card" [class.is-active]="selectedOrderId === order._id" (click)="selectOrder(order._id)">
+                <div class="order-card__top">
+                  <div>
+                    <p class="order-number text-cprimary">{{ order.displayNumber }}</p>
+                    <p class="order-date text-cxs text-csecondary">{{ order.displayDate }}</p>
+                  </div>
+                  <span class="status-pill" [attr.data-tone]="mapOrderTone(order.orderStatus)">{{ order.displayStatus }}</span>
+                </div>
+
+                <div class="order-card__body">
+                  <div class="thumb-stack" aria-hidden="true">
+                    @if (order.productImages.length > 0) {
+                      @for (image of order.productImages.slice(0, 3); track image) {
+                        <img [src]="image" alt="" />
+                      }
+                    } @else {
+                      <span>{{ order.displayNumber.slice(-2) }}</span>
+                    }
+                  </div>
+
+                  <div class="order-card__copy">
+                    <div class="order-meta-row">
+                      <span class="text-cxs text-csecondary">Payment</span>
+                      <strong class="text-csm text-cprimary">{{ order.displayPaymentStatus }}</strong>
+                    </div>
+                    <div class="order-meta-row">
+                      <span class="text-cxs text-csecondary">Tracking</span>
+                      <strong class="text-csm text-cprimary">{{ order.displayTrackingNumber }}</strong>
+                    </div>
+                    <div class="order-meta-row">
+                      <span class="text-cxs text-csecondary">Carrier</span>
+                      <strong class="text-csm text-cprimary">{{ order.displayCarrier }}</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="order-card__footer">
+                  <span class="text-cxs text-csecondary">{{ order.itemCount }} item{{ order.itemCount === 1 ? '' : 's' }}</span>
+                  <strong class="text-cbase text-cprimary">$ {{ order.totalPrice.toFixed(1) }}</strong>
+                </div>
+              </button>
+            }
+          </div>
+        }
+      </aside>
+
+      <article class="orders-detail card">
+        @if (selectedOrder) {
+          <div class="detail-header">
+            <div>
+              <p class="section-kicker text-cxs text-csecondary">Selected order</p>
+              <h2 class="detail-title text-cprimary">{{ selectedOrder.displayNumber }}</h2>
+              <p class="detail-subtitle text-csm text-csecondary">Placed {{ selectedOrder.displayDate }}</p>
+            </div>
+            <span class="status-pill" [attr.data-tone]="mapOrderTone(selectedOrder.orderStatus)">{{ selectedOrder.displayStatus }}</span>
+          </div>
+
+          <div class="detail-grid">
+            <div class="detail-block">
+              <span class="detail-label text-cxs text-csecondary">Payment method</span>
+              <strong class="detail-value text-cprimary">{{ selectedOrder.displayPaymentMethod }}</strong>
+            </div>
+
+            <div class="detail-block">
+              <span class="detail-label text-cxs text-csecondary">Payment status</span>
+              <strong class="detail-value text-cprimary">{{ selectedOrder.displayPaymentStatus }}</strong>
+            </div>
+
+            <div class="detail-block">
+              <span class="detail-label text-cxs text-csecondary">Carrier</span>
+              <strong class="detail-value text-cprimary">{{ selectedOrder.displayCarrier }}</strong>
+            </div>
+
+            <div class="detail-block">
+              <span class="detail-label text-cxs text-csecondary">Tracking number</span>
+              <strong class="detail-value text-cprimary">{{ selectedOrder.displayTrackingNumber }}</strong>
+            </div>
+          </div>
+
+          <div class="timeline-wrap">
+            <div class="timeline-title-row">
+              <p class="section-kicker text-cxs text-csecondary">Tracking</p>
+              <span class="timeline-note text-cxs text-csecondary">{{ detailsLoading ? 'Refreshing details...' : 'Latest shipment activity' }}</span>
+            </div>
+
+            <div class="timeline" aria-label="Order progress">
+              @for (step of trackingStepsFor(selectedOrder); track step.key; let index = $index) {
+                <div class="timeline-step" [class.is-active]="step.status === 'active'" [class.is-completed]="step.status === 'completed'">
+                  <div class="step-marker">{{ index + 1 }}</div>
+                  <div class="step-copy">
+                    <p class="text-csm text-cprimary">{{ step.label }}</p>
+                    <small class="text-cxs text-csecondary">{{ step.status | titlecase }}</small>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="detail-columns">
+            <div class="detail-block detail-block--wide">
+              <span class="detail-label text-cxs text-csecondary">Shipping address</span>
+              <div class="address-lines text-csm text-csecondary">
+                @if (selectedOrder.displayAddress.length > 0) {
+                  @for (line of selectedOrder.displayAddress; track line) {
+                    <p>{{ line }}</p>
+                  }
+                } @else {
+                  <p>No shipping address available.</p>
+                }
+              </div>
+            </div>
+
+            <div class="detail-block">
+              <span class="detail-label text-cxs text-csecondary">Account email</span>
+              <strong class="detail-value text-cprimary">{{ confirmationEmail }}</strong>
+            </div>
+          </div>
+
+          <div class="items-block">
+            <div class="section-head compact">
+              <div>
+                <p class="section-kicker text-cxs text-csecondary">Items</p>
+                <h3 class="section-title text-cprimary">Order contents</h3>
+              </div>
+              <strong class="text-csm text-cprimary">$ {{ selectedOrder.totalPrice.toFixed(1) }}</strong>
+            </div>
+
+            @if ((selectedOrder.items ?? []).length > 0) {
+              <div class="items-list">
+                @for (item of selectedOrder.items ?? []; track $index) {
+                  <div class="item-row">
+                    <div class="item-thumb">
+                      @if (item.product?.images?.[0]) {
+                        <img [src]="item.product.images[0]" [alt]="item.product?.name || 'Order item'" />
+                      } @else {
+                        <span>OX</span>
+                      }
+                    </div>
+
+                    <div class="item-copy">
+                      <p class="text-csm text-cprimary">{{ item.product?.name || 'Order item' }}</p>
+                      <small class="text-cxs text-csecondary">Qty {{ item.quantity ?? 1 }}</small>
+                    </div>
+
+                    <strong class="text-csm text-cprimary">$ {{ (item.price ?? 0).toFixed(1) }}</strong>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p class="text-csm text-csecondary">Item details are not available for this order yet.</p>
+            }
+          </div>
+        } @else {
+          <div class="detail-empty">
+            <h2 class="text-cprimary">Select an order</h2>
+            <p class="text-csm text-csecondary">Choose any order from the list to see shipment details, items, and tracking.</p>
+          </div>
+        }
+      </article>
+    </section>
+  }
 </section>

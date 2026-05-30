@@ -1,4 +1,8 @@
 :host{
+      display: block; /* CRITICAL: Allows overflow: hidden to work */
+    width: 100%;
+    overflow: hidden;
+    overflow: hidden;
     ::ng-deep .brands{
         color: var(--color-text-placeholder);
         
@@ -6,6 +10,7 @@
             
         }
         .p-carousel-items-content {
+
       transition-duration: 1.2s !important;
       transition-timing-function: linear !important;
         }
@@ -27,8 +32,9 @@
         }
     }
     ::ng-deep .categories{
+        overflow: hidden;
         img{
-            width: 200px;
+            width: 150px;
         }
         .p-carousel-prev,
     .p-carousel-next,

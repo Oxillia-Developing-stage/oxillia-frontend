@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CartService, CartDto, CartItem as CartLine } from '../cart/cart.service';
 import { OrderService } from '../order/order.service';
 import { PaymentService } from './payment.service';
@@ -21,6 +21,7 @@ export class Payment implements OnInit {
   private readonly orderService = inject(OrderService);
   private readonly paymentService = inject(PaymentService);
   private readonly toasterService = inject(ToasterService);
+  private readonly router = inject(Router);
 
   cartItems: CartLine[] = [];
   loading = true;
@@ -85,8 +86,13 @@ export class Payment implements OnInit {
   submitCheckout(): void {
     const address = this.address;
 
-    if (!address?.governorateId || !address.districtId || !address.addressLine.trim()) {
-      this.toasterService.showError('Select your city, district, and address first.');
+    if (!address?.countryId || !address.governorateId || !address.districtId) {
+      this.toasterService.showError('Select your country, city, and district first.');
+      return;
+    }
+
+    if (!address.addressLine.trim() || address.addressLine.trim().length < 6) {
+      this.toasterService.showError('Enter your address line first. It must be at least 6 characters.');
       return;
     }
 
@@ -95,6 +101,7 @@ export class Payment implements OnInit {
     if (this.selectedPaymentMethod === 'cod') {
       this.orderService
         .placeCodOrder({
+          countryId: address.countryId,
           governorateId: address.governorateId,
           districtId: address.districtId,
           addressLine: address.addressLine,
@@ -102,9 +109,23 @@ export class Payment implements OnInit {
           shippingMethodCode: 'standard',
         })
         .subscribe({
-          next: () => {
+          next: (response) => {
             this.toasterService.showsuccess('Order placed successfully.');
             this.cartService.refreshCartCount();
+            this.router.navigate(['/main/order'], {
+              state: {
+                orderId: response.data?._id,
+                addressLine: address.addressLine,
+                countryName: address.countryName,
+                governorateName: address.governorateName,
+                districtName: address.districtName,
+                items: this.cartItems,
+                subtotal: this.subtotal,
+                shipping: this.shippingPrice ?? 0,
+                total: this.total,
+                paymentMethod: 'cod',
+              },
+            });
             this.submitting = false;
           },
           error: (error) => {
@@ -118,6 +139,7 @@ export class Payment implements OnInit {
 
     this.paymentService
       .startPaymentSession({
+        countryId: address.countryId,
         governorateId: address.governorateId,
         districtId: address.districtId,
         addressLine: address.addressLine,

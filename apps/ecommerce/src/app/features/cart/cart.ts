@@ -7,13 +7,13 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary'
 import { Recommendations } from '../shop/components/recommendations/recommendations';
 import { Browsed } from '../shop/components/browsed/browsed';
 import { ProductItem } from '../../shared/interfacers/products';
-import { ShopService } from '../shop/shop.service';
+import { BrowsingHistoryItem, ShopService } from '../shop/shop.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterLink, CartItemComponent, OrderSummaryComponent],
+  imports: [CommonModule, RouterLink, CartItemComponent, OrderSummaryComponent, Recommendations, Browsed],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
@@ -23,8 +23,6 @@ export class Cart implements OnInit {
   readonly loading = signal(true);
   readonly recommendedProducts = signal<ProductItem[]>([]);
   readonly browsedProducts = signal<ProductItem[]>([]);
-  readonly recommendationsComponent = Recommendations;
-  readonly browsedComponent = Browsed;
 
   constructor(
     private readonly cartService: CartService,
@@ -64,7 +62,7 @@ export class Cart implements OnInit {
       });
 
       this.shopService.getBrowesedHistory().subscribe({
-        next: (res) => this.browsedProducts.set(res.data ?? []),
+        next: (res) => this.browsedProducts.set((res.data ?? []).map((item: BrowsingHistoryItem) => item.product)),
       });
 
       return;

@@ -1,4 +1,4 @@
-import { CommonModule, CurrencyPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Input, ViewChild, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { register } from 'swiper/element/bundle';
@@ -10,7 +10,7 @@ register();
 @Component({
   selector: 'app-recommendations',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, ProductsCard],
+  imports: [CommonModule, ProductsCard],
   templateUrl: './recommendations.html',
   styleUrl: './recommendations.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

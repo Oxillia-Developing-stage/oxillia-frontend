@@ -1,0 +1,119 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
+.account-dropdown-shell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.account-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.account-trigger:hover {
+  color: var(--color-text-primary);
+}
+
+.account-trigger--guest {
+  text-decoration: none;
+}
+
+.account-icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  color: var(--color-icon-primary);
+  background: color-mix(in srgb, var(--color-button-primary) 8%, transparent);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.account-text__label {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.account-caret {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+:host ::ng-deep .account-dropdown-panel.p-menu.p-menu-overlay,
+:host ::ng-deep .account-dropdown-panel.p-menu-overlay {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-border-default) 12%, transparent);
+  background: var(--color-bg-surface);
+  background-color: var(--color-bg-surface);
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--color-button-primary) 12%, transparent);
+  overflow: hidden;
+}
+
+:host ::ng-deep .account-dropdown-panel .p-menu-list {
+  padding: 0.5rem;
+}
+
+:host ::ng-deep .account-menu-item-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  color: var(--color-text-primary) !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:host ::ng-deep .account-menu-item-link:hover {
+  background: var(--color-bg-card) !important;
+  color: var(--color-text-primary) !important;
+}
+
+:host ::ng-deep .account-menu-item-link.is-danger {
+  color: var(--color-error);
+}
+
+:host ::ng-deep .account-menu-item-label {
+  color: inherit !important;
+}
+
+:host ::ng-deep .account-dropdown-panel .p-menu-item-link,
+:host ::ng-deep .account-dropdown-panel .p-menuitem-link {
+  color: var(--color-text-primary) !important;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .account-dropdown-panel .p-menu-item-link:hover,
+:host ::ng-deep .account-dropdown-panel .p-menuitem-link:hover {
+  background: var(--color-bg-card) !important;
+  color: var(--color-text-primary) !important;
+}
+
+:host ::ng-deep .account-dropdown-panel .is-danger .p-menuitem-link {
+  color: var(--color-error);
+}
+
+@media (max-width: 640px) {
+  .account-dropdown-shell {
+    gap: 0.45rem;
+  }
+
+  .account-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}

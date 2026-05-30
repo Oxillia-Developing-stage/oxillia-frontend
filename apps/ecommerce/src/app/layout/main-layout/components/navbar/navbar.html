@@ -2,7 +2,7 @@
     <ul class="hidden  md:flex space-x-7 p-4 text-[var(--color-text-secondary)] justify-start flex-1">
         <li><a routerLink="main/home" routerLinkActive="active" class="nav-link" [routerLinkActiveOptions]="{exact:true}" >Home</a></li>
         <li><a routerLink="main/shop" routerLinkActive="active" class="nav-link" >shop</a></li>
-        <li><a href="#" class="nav-link">Categories</a></li>
+        <li><a routerLink="/main/products" class="nav-link">Categories</a></li>
         <li><a href="#" class="nav-link">Docs</a></li>
     </ul>
     <ox-icon name="ox-mobile-menu"  class="md:hidden "  [size]="30" (click)="toggleMobileMenu()"></ox-icon>
@@ -18,13 +18,12 @@
         <ox-icon name="ox-shopping-basket" class="flex justify-center items-center" [size]="24"></ox-icon>
         <span *ngIf="cartCount() > 0" class="cart-badge">{{ cartCount() }}</span>
     </a>
-    <div class="ml-4 flex items-center space-x-2">
-            <ox-icon name="ox-user" [size]="24" class="flex justify-center items-center"></ox-icon>
-    <a  [routerLink]="accountRoute()">
-        <span *ngIf="!isAuthenticated()"><span class="hidden  md:inline" >Register/</span>Sign In</span>
-        <span *ngIf="isAuthenticated()">{{ accountLabel() }}</span>
-    </a>
-    </div>
+    <app-navbar-account-dropdown
+      class="ml-4"
+      [isAuthenticated]="isAuthenticated()"
+      [accountLabel]="accountLabel()"
+      [accountRoute]="accountRoute()"
+    ></app-navbar-account-dropdown>
 </div>
 </nav>
 
@@ -88,10 +87,23 @@
                 </div>
                 <ul *ngIf="openCategoryIndex === i" class="mt-2 pl-4 border-l border-[var(--color-border)]">
                     <li *ngFor="let category of categories" class="mt-2">
-                        <span class="font-semibold text-[var(--color-text-primary)]">{{category.name}}</span>
+                        <a
+                            [routerLink]="['/main/products']"
+                            [queryParams]="{ category: category.name }"
+                            class="font-semibold text-[var(--color-text-primary)] hover:text-[var(--color-text-primary)]"
+                        >
+                            {{category.name}}
+                        </a>
                         <ul class="mt-1 pl-4">
                             <li *ngFor="let sub of category.children" class="mt-1">
-                                <a href="#" class="nav-link block">{{sub}}</a>
+                                <a
+                                    [routerLink]="['/main/products']"
+                                    [queryParams]="{ category: category.name, subCategory: sub }"
+                                    class="nav-link block"
+                                    (click)="toggleMobileMenu()"
+                                >
+                                    {{sub}}
+                                </a>
                             </li>
                         </ul>
                     </li>

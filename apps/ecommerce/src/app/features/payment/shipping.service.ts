@@ -36,6 +36,15 @@ export interface ShippingDistrict {
   isOther?: boolean;
 }
 
+export interface ShippingZonesResponse {
+  hasDistricts: boolean;
+  districts: ShippingDistrict[];
+  other?: {
+    label: string;
+    shippingPrice: number;
+  };
+}
+
 export interface ShippingResolveResponse {
   shippingPrice: number;
   isOther: boolean;
@@ -58,8 +67,8 @@ export class ShippingService {
     );
   }
 
-  getZones(governorateId: string): Observable<ApiResponse<ShippingDistrict[]>> {
-    return this.http.get<ApiResponse<ShippingDistrict[]>>(
+  getZones(governorateId: string): Observable<ApiResponse<ShippingZonesResponse>> {
+    return this.http.get<ApiResponse<ShippingZonesResponse>>(
       `${this.baseUrl}/shipping/governorates/${governorateId}/zones`,
     );
   }

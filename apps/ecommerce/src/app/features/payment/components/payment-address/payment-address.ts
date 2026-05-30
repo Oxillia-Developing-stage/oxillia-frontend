@@ -5,10 +5,12 @@ import { SelectModule } from 'primeng/select';
 import { ShippingCountry, ShippingDistrict, ShippingGovernorate, ShippingService } from '../../shipping.service';
 
 export interface PaymentAddressValue {
+  countryId: string;
   governorateId: string;
   districtId: string;
   addressLine: string;
   phoneNumber: string;
+  countryName?: string;
   governorateName?: string;
   districtName?: string;
 }
@@ -18,7 +20,7 @@ export interface PaymentAddressValue {
   standalone: true,
   imports: [CommonModule, FormsModule, SelectModule],
   templateUrl: './payment-address.html',
-  styleUrl: './payment-address.css',
+  styleUrl: './payment-address.scss',
 })
 export class PaymentAddressComponent implements OnInit {
   private readonly shippingService = inject(ShippingService);
@@ -111,19 +113,21 @@ export class PaymentAddressComponent implements OnInit {
   }
 
   private loadDistricts(governorateId: string): void {
-  this.shippingService.getZones(governorateId).subscribe({
-    next: (response) => {
-      // Use fallback array if response.data is null, undefined, or not an array
-      const districts = Array.isArray(response.data) ? response.data : [];
-      
-      const hasOther = districts.some((district) => district._id === 'other');
-      this.districts.set(hasOther ? districts : [...districts, { _id: 'other', name: 'Other', isOther: true }]);
-      this.selectedDistrictId = this.districts()[0]?._id ?? '';
-      this.emitChange();
-    },
-    error: () => this.districts.set([]),
-  });
-}
+    this.shippingService.getZones(governorateId).subscribe({
+      next: (response) => {
+        const zones = response.data;
+        const districts = zones?.districts ?? [];
+        const otherDistrict = zones?.other
+          ? { _id: 'other', name: zones.other.label, shippingPrice: zones.other.shippingPrice, isOther: true }
+          : { _id: 'other', name: 'Other', isOther: true };
+
+        this.districts.set([...districts, otherDistrict]);
+        this.selectedDistrictId = this.districts()[0]?._id ?? '';
+        this.emitChange();
+      },
+      error: () => this.districts.set([]),
+    });
+  }
 
 
   private emitChange(): void {
@@ -131,10 +135,12 @@ export class PaymentAddressComponent implements OnInit {
     const district = this.districts().find((item) => item._id === this.selectedDistrictId);
 
     const payload: PaymentAddressValue = {
+      countryId: this.selectedCountryId,
       governorateId: this.selectedGovernorateId,
       districtId: this.selectedDistrictId,
       addressLine: this.addressLine,
       phoneNumber: this.phoneNumber,
+      countryName: this.countries().find((item) => item._id === this.selectedCountryId)?.name,
       governorateName: governorate?.name,
       districtName: district?.name,
     };

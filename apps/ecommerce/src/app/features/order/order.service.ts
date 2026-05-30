@@ -16,6 +16,7 @@ export interface ApiResponse<T> {
 }
 
 export interface OrderBody {
+  countryId: string;
   governorateId: string;
   districtId: string;
   addressLine: string;
@@ -27,6 +28,67 @@ export interface OrderDto {
   _id: string;
   orderStatus?: string;
   paymentStatus?: string;
+  paymentMethod?: 'cod' | 'card';
+  statusLabel?: string;
+  paymentStatusLabel?: string;
+  total?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  shippingAddress?: {
+    governorateName?: string;
+    districtLabel?: string;
+    addressLine?: string;
+  };
+  shipment?: {
+    carrierName?: string;
+    trackingNumber?: string;
+    status?: string;
+    providerStateLabel?: string;
+  };
+  tracking?: {
+    phase?: 'placed' | 'handed_over' | 'in_transit' | 'delivered';
+    trackingNumber?: string;
+    steps?: TrackStepDto[];
+  };
+  items?: Array<{
+    quantity?: number;
+    price?: number;
+    product?: {
+      name?: string;
+      images?: string[];
+    };
+  }>;
+}
+
+export interface TrackStepDto {
+  key: string;
+  label: string;
+  status: 'completed' | 'active' | 'upcoming';
+}
+
+export interface TrackOrderDto {
+  orderId: string;
+  orderStatus?: string;
+  statusLabel?: string;
+  paymentStatus?: string;
+  paymentStatusLabel?: string;
+  paymentMethod?: 'cod' | 'card';
+  total?: number;
+  shippingAddress?: {
+    governorateName?: string;
+    districtLabel?: string;
+  };
+  shipment?: {
+    carrierName?: string;
+    trackingNumber?: string;
+    status?: string;
+    providerStateLabel?: string;
+  };
+  tracking?: {
+    phase?: 'placed' | 'handed_over' | 'in_transit' | 'delivered';
+    trackingNumber?: string;
+    steps?: TrackStepDto[];
+  };
 }
 
 @Injectable({
@@ -48,12 +110,12 @@ export class OrderService {
     return this.http.get<ApiResponse<OrderDto>>(`${this.baseUrl}/orders/my-orders/${orderId}`);
   }
 
-  trackMyOrder(orderId: string): Observable<ApiResponse<unknown>> {
-    return this.http.get<ApiResponse<unknown>>(`${this.baseUrl}/track/order/${orderId}`);
+  trackMyOrder(orderId: string): Observable<ApiResponse<TrackOrderDto>> {
+    return this.http.get<ApiResponse<TrackOrderDto>>(`${this.baseUrl}/track/order/${orderId}`);
   }
 
-  trackByNumber(trackingNumber: string): Observable<ApiResponse<unknown>> {
-    return this.http.get<ApiResponse<unknown>>(
+  trackByNumber(trackingNumber: string): Observable<ApiResponse<TrackOrderDto>> {
+    return this.http.get<ApiResponse<TrackOrderDto>>(
       `${this.baseUrl}/track/${encodeURIComponent(trackingNumber)}`,
     );
   }

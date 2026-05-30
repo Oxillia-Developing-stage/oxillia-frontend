@@ -36,18 +36,14 @@
   @if (recommendedProducts().length > 0) {
     <section class="discover-section">
       <h2 class="discover-title text-clg text-cprimary">Products recently viewed</h2>
-      <ng-container
-        *ngComponentOutlet="recommendationsComponent; inputs: { products: recommendedProducts() }"
-      ></ng-container>
+      <app-recommendations [products]="recommendedProducts()"></app-recommendations>
     </section>
   }
 
   @if (browsedProducts().length > 0) {
     <section class="discover-section">
       <h2 class="discover-title text-clg text-cprimary">Buy again</h2>
-      <ng-container
-        *ngComponentOutlet="browsedComponent; inputs: { products: browsedProducts() }"
-      ></ng-container>
+      <app-browsed [products]="browsedProducts()"></app-browsed>
     </section>
   }
 </section>

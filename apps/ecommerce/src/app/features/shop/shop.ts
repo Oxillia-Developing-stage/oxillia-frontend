@@ -67,7 +67,7 @@ isAuthenticated() {
 		})
 		this._shopServive.getBrowesedHistory().subscribe({
 			next:(res)=>{
-				this.browsed	.set(res.data)
+				this.browsed.set(res.data.map((item) => item.product))
 			}
 		})
 	}

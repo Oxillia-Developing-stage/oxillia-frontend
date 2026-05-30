@@ -1,5 +1,5 @@
-import { Component, ViewChild, ElementRef, Inject, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
-import { CommonModule, CurrencyPipe, isPlatformBrowser } from '@angular/common';
+import { Component, ViewChild, ElementRef, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { ProductItem } from 'apps/ecommerce/src/app/shared/interfacers/products';
@@ -11,7 +11,7 @@ register();
 @Component({
   selector: 'app-landing-silder',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, ProductsCard],
+  imports: [CommonModule, ProductsCard],
   templateUrl: './landing-silder.html',
   styleUrl: './landing-silder.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

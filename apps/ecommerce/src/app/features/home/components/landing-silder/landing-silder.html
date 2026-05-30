@@ -33,11 +33,11 @@
       >
         <swiper-slide *ngFor="let product of products">
           <app-products-card
-          [productid]="product.id"
+          [productid]="product._id"
           [name]="product.name"
-          [url]="product.url"
-          [newprice]="product.newprice"
-          [oldprice]="product.oldprice"
+          [url]="product.images?.[0]"
+          [newprice]="product.priceAfterDiscount ?? product.price"
+          [oldprice]="product.price"
           
           ></app-products-card>
           <!-- <div class="card p-3 flex flex-col items-center rounded-xl justify-center bg-[var(--color-bg-primary)] h-auto relative">

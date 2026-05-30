@@ -16,6 +16,7 @@ export interface ApiResponse<T> {
 }
 
 export interface PaymentSessionBody {
+  countryId: string;
   governorateId: string;
   districtId: string;
   addressLine: string;
